@@ -1,0 +1,23 @@
+{
+  "name": "root",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "type": "module",
+  "scripts": {
+    "stop": "kill-port --port 3001,3002,3003,8888",
+    "start": "lerna run --parallel start",
+    "build": "lerna run build",
+    "serve": "lerna run --parallel serve",
+    "clean": "lerna run --parallel clean"
+  },
+  "devDependencies": {
+    "lerna": "^5.2.0"
+  },
+  "dependencies": {
+    "kill-port": "^2.0.1",
+    "sass": "^1.54.9",
+    "sass-loader": "^13.0.2"
+  }
+}

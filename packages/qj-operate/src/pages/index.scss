@@ -1,0 +1,32 @@
+@import "~antd/dist/antd.css";
+@import '@brushes/materials/css/materials';
+
+.operateConfig{
+  background: #fff;
+  .config-top{
+    padding: 10px 20px;
+    border-bottom: solid 1px #efefef;
+  }
+  .inner-operate{
+    padding: 20px;
+    .title{ font-size: 20px; margin-bottom: 12px}
+    .info{
+      color: #777;
+    }
+  }
+}
+.ant-modal-close-x{
+  .anticon{ padding-top: 20px}
+}
+.ant-modal-body{
+  padding-top: 0;
+  padding-bottom: 0;
+  .ant-table-wrapper{
+    min-height: 400px;
+  }
+}
+.search-material-search .search-material-item{
+  display: grid;
+  grid-column-gap: 10px;
+  grid-template-columns: repeat(2, 1fr);
+}
