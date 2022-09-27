@@ -1,11 +1,10 @@
 import React, {useEffect, useState} from 'react';
-import Main from './pages';
+import Index from './pages';
 import {NodeGraph, useLowCodeGraph} from 'qj-shared-library';
 import { _ } from '@brushes/tools';
 import {Button, Space} from 'antd';
 import { lowCodeSave } from '@brushes/store';
 import message from 'antd/es/message';
-import IndexVue from './pages/index-vue';
 
 const { isEmpty, omit } = _;
 
@@ -39,7 +38,7 @@ const App = () => {
     })
   }
 
-  console.log(41, defaultValue)
+  console.log('41=======> 当前物料的配置', defaultValue)
   if(isEmpty(defaultValue)) return;
 
   return (
@@ -51,8 +50,7 @@ const App = () => {
           </Button>
         </Space>
       </div>
-      <IndexVue defaultValue={}
-      <Main key={defaultValue.id} defaultValue={defaultValue}/>
+      <Index key={defaultValue.id} defaultValue={defaultValue}/>
     </div>
   )
 }

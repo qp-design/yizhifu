@@ -1,28 +1,26 @@
-
 import { createApp, h } from 'vue';
-import { memo, useRef, useEffect } from 'react';
+import React, { useRef, useEffect } from 'react';
 import { _ } from '@brushes/tools';
-
 // @ts-ignore
 import * as operateVue from 'qj-operate-vue/operate-vue'
 import {NodeGraph} from 'qj-shared-library';
 
+const { get } = _;
+
 const IndexVue = ({defaultValue}: { defaultValue: NodeGraph }) => {
   const ref = useRef();
   useEffect(() => {
-    console.log(operateVue)
-    // const app = createApp(h(Goods, {defaultValue}));
-    // app.mount(ref.current)
+    const AppVue = get(operateVue, defaultValue.type);
+    const app = createApp(h(AppVue, {defaultValue}));
+    app.mount(ref.current)
 
     return () => {
-      // app.unmount()
+      app.unmount()
     }
   }, []);
 
   return (
-    <div ref={ref}>
-      123131312313
-    </div>
+    <div ref={ref}></div>
   )
 }
 
