@@ -50,7 +50,9 @@ module.exports = {
       exposes: {
         './operate': './src/App',
       },
-      remotes: {},
+      remotes: {
+        'qj-operate-vue': 'qj_operate_vue@http://localhost:3005/remoteEntry.js'
+      },
       shared: {
         ...deps,
         'qj-shared-library': {

@@ -5,6 +5,7 @@ import { _ } from '@brushes/tools';
 import {Button, Space} from 'antd';
 import { lowCodeSave } from '@brushes/store';
 import message from 'antd/es/message';
+import IndexVue from './pages/index-vue';
 
 const { isEmpty, omit } = _;
 
@@ -50,6 +51,7 @@ const App = () => {
           </Button>
         </Space>
       </div>
+      <IndexVue defaultValue={}
       <Main key={defaultValue.id} defaultValue={defaultValue}/>
     </div>
   )

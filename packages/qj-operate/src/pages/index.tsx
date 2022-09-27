@@ -12,11 +12,11 @@ const { get, omit } = _;
 const Main = ({defaultValue}: { defaultValue: NodeGraph }) => {
   const [form] = useForm();
   const monitorInstance = useLowCodeGraph(1);
-  const initialValues = defaultValue.props
-  const { formConfig, title, info } = get(config, defaultValue.type)
+  const initialValues = defaultValue.props;
+  const { formConfig, title, info } = get(config, defaultValue.type);
   const callbackImpl = useImmutableCallback((changedValues: any, allValues: any) => {
     monitorInstance.updateNode(allValues)
-  })
+  });
 
   useEffect(() => {
     const props = omit(initialValues, 'defaultValue');
