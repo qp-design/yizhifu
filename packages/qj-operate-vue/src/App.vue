@@ -1,9 +1,7 @@
 <template>
   <div class="container">
-    <div>Name: qj-operate-vue</div>
-    <div>Framework: vue3</div>
-    <div>Language: TypeScript</div>
-    <div>CSS: Empty CSS</div>
+    <div>vue配置默认页面</div>
+    <div>暂时没有用处</div>
   </div>
 </template>
 
