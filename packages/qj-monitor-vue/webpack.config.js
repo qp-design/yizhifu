@@ -1,19 +1,22 @@
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPlugin");
+const { VueLoaderPlugin } = require("vue-loader");
+const {dependencies: deps} = require("./package.json");
 const webpack = require('webpack');
+
 require('dotenv').config()
-const deps = require("./package.json").dependencies;
+
 module.exports = {
   output: {
-    publicPath: "http://localhost:3002/",
+    publicPath: "http://localhost:3004/",
   },
 
   resolve: {
-    extensions: [".tsx", ".ts", ".jsx", ".js", ".json"],
+    extensions: [".tsx", ".ts", ".vue", ".jsx", ".js", ".json"],
   },
 
   devServer: {
-    port: 3002,
+    port: 3004,
     historyApiFallback: true,
     headers: {
       'Access-Control-Allow-Origin': '*',
@@ -23,48 +26,53 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.m?js/,
-        type: "javascript/auto",
-        resolve: {
-          fullySpecified: false,
-        },
+        test: /\.vue$/,
+        loader: "vue-loader",
+      },
+      {
+        test: /\.tsx?$/,
+        use: [
+          "babel-loader",
+          {
+            loader: "ts-loader",
+            options: {
+              transpileOnly: true,
+              appendTsSuffixTo: ["\\.vue$"],
+              happyPackMode: true,
+            },
+          },
+        ],
       },
       {
         test: /\.(css|s[ac]ss)$/i,
         use: ["style-loader", "css-loader", "postcss-loader", "sass-loader"],
       },
-      {
-        test: /\.(ts|tsx|js|jsx)$/,
-        exclude: /node_modules/,
-        use: {
-          loader: "babel-loader",
-        },
-      },
     ],
   },
 
   plugins: [
+    new VueLoaderPlugin(),
     new ModuleFederationPlugin({
-      name: 'qj_operate',
-      filename: 'remoteEntry.js',
-      exposes: {
-        './operate': './src/App',
-      },
+      name: "qj_monitor_vue",
+      filename: "remoteEntry.js",
       remotes: {},
+      exposes: {
+        './monitor-vue': './src/App.vue'
+      },
       shared: {
         ...deps,
         'qj-shared-library': {
           import: 'qj-shared-library',
           requiredVersion: require('../s-shared-library-1.0/package.json').version,
         },
-        react: {
-          singleton: true,
-          requiredVersion: deps.react,
+        's-material-vue': {
+          import: 's-material-vue',
+          requiredVersion: require('../s-material-vue/package.json').version,
         },
-        "react-dom": {
+        vue: {
           singleton: true,
-          requiredVersion: deps["react-dom"],
-        }
+          requiredVersion: deps.vue,
+        },
       },
     }),
     new HtmlWebPackPlugin({

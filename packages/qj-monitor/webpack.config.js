@@ -1,5 +1,8 @@
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPlugin");
+const webpack = require('webpack');
+
+require('dotenv').config()
 
 const deps = require("./package.json").dependencies;
 module.exports = {
@@ -8,7 +11,7 @@ module.exports = {
   },
 
   resolve: {
-    extensions: [".tsx", ".ts", ".jsx", ".js", ".json"],
+    extensions: [".tsx", ".ts", ".jsx", ".js", ".json", '.vue'],
   },
 
   devServer: {
@@ -56,6 +59,10 @@ module.exports = {
           import: 'qj-shared-library',
           requiredVersion: require('../s-shared-library-1.0/package.json').version,
         },
+        's-material-vue': {
+          import: 's-material-vue',
+          requiredVersion: require('../s-material-vue/package.json').version,
+        },
         react: {
           singleton: true,
           requiredVersion: deps.react,
@@ -68,6 +75,13 @@ module.exports = {
     }),
     new HtmlWebPackPlugin({
       template: "./src/index.html",
+    }),
+    new webpack.DefinePlugin({
+      "process.env": {
+        REACT_APP_BASE_URL: JSON.stringify(process.env.REACT_APP_BASE_URL),
+        REACT_APP_SESSION_KEY: JSON.stringify(process.env.REACT_APP_SESSION_KEY),
+        REACT_APP_APPLICATION: JSON.stringify(process.env.REACT_APP_APPLICATION),
+      },
     }),
   ],
 };

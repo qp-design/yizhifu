@@ -5,7 +5,7 @@
     "build": "webpack --mode production",
     "build:dev": "webpack --mode development",
     "build:start": "cd dist && PORT=3002 npx serve",
-    "start": "cross-env REACT_APP_BASE_URL='https://b2copt-dev2021112700000085.qjclouds.com/' REACT_APP_SESSION_KEY='saas-token' REACT_APP_APPLICATION='B2Cchannel' webpack serve --mode development",
+    "start": "webpack serve --mode development",
     "start:live": "webpack serve --open --mode development --live-reload --hot"
   },
   "license": "MIT",
@@ -20,6 +20,7 @@
     "autoprefixer": "^10.1.0",
     "babel-loader": "^8.2.2",
     "css-loader": "^6.3.0",
+    "dotenv": "^16.0.2",
     "html-webpack-plugin": "^5.3.2",
     "postcss": "^8.2.1",
     "postcss-loader": "^4.1.0",
@@ -30,7 +31,7 @@
     "webpack-dev-server": "^4.3.1"
   },
   "dependencies": {
-    "@brushes/materials": "^0.0.23",
+    "@brushes/materials": "^0.0.24",
     "@brushes/store": "^1.0.37",
     "cross-env": "^7.0.3",
     "react": "^17.0.2",

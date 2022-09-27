@@ -6,6 +6,7 @@ import {
 } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
 import { ReactNode } from 'react';
+import className from 'classnames'
 import { DRAGGABLE_COMPONENT, MATERIALS_TYPE } from './types';
 // @ts-ignore
 import { useLowCodeGraph } from '../hooks';
@@ -19,11 +20,43 @@ export const DropJsx = ({ children }: { children: ReactNode }) => {
     const monitorInstance = useLowCodeGraph(1);
     const [{ isOver, canDrop }, drop] = useDrop(() => ({
         accept: DRAGGABLE_COMPONENT,
-        drop: (item: MATERIALS_TYPE, monitor) => {
+        drop: (item: MATERIALS_TYPE) => {
             monitorInstance.addNode(item);
         },
-        // hover: (...args) => {
-        //     console.log(args)
+        // hover: (item:MATERIALS_TYPE, monitor) => {
+        //     // console.log(args)
+        //   // 只检查被hover的最小元素
+        //   const didHover = monitor.isOver({ shallow: true });
+        //   if (didHover && ref.current) {
+        //     // Determine rectangle on screen
+        //     const hoverBoundingRect = ref.current.getBoundingClientRect();
+        //     // Get vertical middle
+        //     const hoverMiddleY =
+        //       (hoverBoundingRect.bottom - hoverBoundingRect.top) / 2;
+        //     // Determine mouse position
+        //
+        //     const clientOffset = monitor.getClientOffset();
+        //     //const dragOffset = monitor.getSourceClientOffset()
+        //
+        //     if (clientOffset) {
+        //       // Get pixels to the top
+        //       const hoverClientY = clientOffset.y - hoverBoundingRect.top;
+        //       // Only perform the move when the mouse has crossed half of the items height
+        //       // When dragging downwards, only move when the cursor is below 50%
+        //       // When dragging upwards, only move when the cursor is above 50%
+        //       // Dragging downwards
+        //
+        //       if (hoverClientY <= hoverMiddleY) {
+        //         console.log(50)
+        //         // setPosition(false);
+        //       }
+        //       // Dragging upwards
+        //       if (hoverClientY > hoverMiddleY) {
+        //         console.log(55)
+        //         // setPosition(true);
+        //       }
+        //     }
+        //   }
         // },
         // canDrop: (...args) => {
         //   console.log(22, args)
@@ -37,13 +70,13 @@ export const DropJsx = ({ children }: { children: ReactNode }) => {
     return (
         <div
             ref={drop}
+            className={className(isOver && canDrop ? 'monitor dragActived' : 'monitor')}
             style={{
                 position: 'relative',
                 width: '100%',
                 height: '100%'
             }}
         >
-            {canDrop && children}
             {children}
         </div>
     );
@@ -56,12 +89,12 @@ interface Props extends MATERIALS_TYPE {
 export const DragJsx: React.FC<Props> = ({ children, type, name, props }) => {
     const [
         { isDragging },
-        drag
+        drag,
         // preview
     ] = useDrag(() => ({
         type: DRAGGABLE_COMPONENT,
         item: { type, props, name },
-        collect: (monitor) => ({
+        collect: (monitor: any) => ({
             isDragging: monitor.isDragging()
         })
     }));

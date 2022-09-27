@@ -4,20 +4,23 @@
   "main": "dist/index.js",
   "license": "MIT",
   "scripts": {
-    "start": "rollup -c -w",
+    "start": "npm run cp-css && rollup -c -w",
+    "cp-css": "rm -rf css/ && mkdir -p ./css && cp -R ./src/css ./",
     "build": "cross-env NODE_ENV=development rollup -c",
     "serve": "serve -d . -p 1000",
     "watch": "cross-env NODE_ENV=development rollup -c -w",
     "clean": "rm -rf dist"
   },
   "dependencies": {
+    "@brushes/api": "^0.0.2",
+    "@brushes/tools": "^1.0.29",
+    "classnames": "^2.3.2",
     "cross-env": "^7.0.2",
     "vue": "^3.2.39"
   },
   "devDependencies": {
     "@babel/core": "7.18.9",
     "@babel/preset-env": "7.18.9",
-    "@babel/preset-react": "7.18.6",
     "@module-federation/rollup-federation": "0.0.1",
     "@rollup/plugin-commonjs": "13.0.2",
     "@rollup/plugin-node-resolve": "8.4.0",

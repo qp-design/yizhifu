@@ -12,9 +12,9 @@ const App = () => {
   const expGraph = useLowCodeGraph(1);
   const [defaultValue, setDefaultValue] = useState<NodeGraph>(null as any);
   useEffect(() => {
-    const sub = expGraph.behaviorId$.subscribe((value) => {
-      console.log(16, value);
-      const data = expGraph.lowCodeGraph.find(item => item.id === value) as NodeGraph;
+    const sub = expGraph.behaviorId$.subscribe((params) => {
+      const { id } = params
+      const data = expGraph.lowCodeGraph.find(item => item.id === id) as NodeGraph;
       setDefaultValue(data)
     })
     return () => {
@@ -25,7 +25,7 @@ const App = () => {
 
   const saveImpl = () => {
     const values = expGraph.lowCodeGraph.map(item => {
-      return omit(item, 'props.value')
+      return omit(item, 'props.defaultValue')
     })
     lowCodeSave({
       modelTagvalueId: 595,
@@ -50,7 +50,7 @@ const App = () => {
           </Button>
         </Space>
       </div>
-      <Main defaultValue={defaultValue}/>
+      <Main key={defaultValue.id} defaultValue={defaultValue}/>
     </div>
   )
 }

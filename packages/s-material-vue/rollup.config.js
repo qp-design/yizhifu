@@ -1,5 +1,5 @@
 import babel from 'rollup-plugin-babel';
-import injectProcessEnv from 'rollup-plugin-inject-process-env';
+// import injectProcessEnv from 'rollup-plugin-inject-process-env';
 // import federation from '@module-federation/rollup-federation';
 import vue from "rollup-plugin-vue"
 // import pkg from './package.json';
@@ -28,6 +28,7 @@ export default {
         '.ts',
         '.tsx'
       ],
+      "presets": ["@babel/preset-env"],
       "plugins": [
         "@vue/babel-plugin-jsx"
       ],

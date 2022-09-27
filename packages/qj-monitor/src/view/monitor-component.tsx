@@ -1,48 +1,36 @@
 import {NodeGraph, useLowCodeGraph} from 'qj-shared-library';
-import React, {useEffect, useRef, useState} from 'react';
-import { Goods }  from 's-material-vue';
+import React, {useEffect, useRef, useState, memo} from 'react';
 import {QjIcon} from '@brushes/components';
 import classNames from 'classnames';
 import { _ } from '@brushes/tools';
-import { createApp } from 'vue';
+import VueMonitor from './vue-monitor';
 
-const {noop, get} = _;
-
-const Inner = () => {
-  const ref = useRef();
-  useEffect(() => {
-    const render = () => {
-      createApp(Goods).mount(ref.current)
-    }
-    render()
-  }, [])
-  return (
-    <div ref={ref}> </div>
-  )
-};
+const {noop} = _;
 
 const MonitorComponent = () => {
   const [node, setNode] = useState<Array<NodeGraph>>([] as any);
   const expGraph = useLowCodeGraph(1);
-  const [actived, setActived] = useState(0);
+  const [actived, setActived] = useState(-1);
 
   const ref = useRef();
   useEffect(() => {
-    const sub = expGraph.behaviorId$.subscribe((value) => {
+    const sub = expGraph.behaviorId$.subscribe((parmas) => {
       const { lowCodeGraph } = expGraph;
-      setActived(value);
-      console.log("monitor ========>", lowCodeGraph);
+      const { id, type } = parmas
+      if(type === 'select') return;
+      setActived(id);
       setNode([...lowCodeGraph])
     })
 
     return () => {
       sub.unsubscribe()
     }
-  }, []);
+  }, [actived]);
 
   const switchHandler = (id: number) => {
     expGraph.activedId = id;
-    expGraph.behaviorId$.next(id)
+    setActived(id);
+    expGraph.behaviorId$.next({id, type: 'select'})
   }
 
   const handlerImpl = (e: any, id: number, index) => {
@@ -74,7 +62,6 @@ const MonitorComponent = () => {
   }
 
   const callbackImpl = (code, id, index) => {
-    console.log(code, id);
     switch (code) {
       case 'delete':
         deleteHandler(id);
@@ -114,7 +101,7 @@ const MonitorComponent = () => {
               }
               <div onClick={() => switchHandler(id)}
                     className={classNames('content', {'actived': id === actived})}>
-                <Inner/>
+                <VueMonitor id={id} {...props}/>
                 {/*<MaterialsComponent id={id} {...props}/>*/}
               </div>
               {
@@ -128,7 +115,6 @@ const MonitorComponent = () => {
           );
         })
       }
-      <div ref={ref}></div>
     </>
   )
 }

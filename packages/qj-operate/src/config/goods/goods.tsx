@@ -25,6 +25,7 @@ export const GoodsJsx = ({form, handleCancel}: { form: FormInstance; handleCance
     onChange: (selectedRowKeys) => {
       ref.current = selectedRowKeys
     },
+    defaultSelectedRowKeys: form.getFieldValue('goods')
   };
 
   const saveImpl = () => {

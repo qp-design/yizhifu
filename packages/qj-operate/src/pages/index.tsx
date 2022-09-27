@@ -19,7 +19,7 @@ const Main = ({defaultValue}: { defaultValue: NodeGraph }) => {
   })
 
   useEffect(() => {
-    const props = omit(initialValues, 'value')
+    const props = omit(initialValues, 'defaultValue');
     form.setFieldsValue(props);
   }, [initialValues]);
 

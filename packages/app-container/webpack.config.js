@@ -50,6 +50,7 @@ module.exports = {
         'qj-material': 'qj_material@http://localhost:3001/remoteEntry.js',
         'qj-operate': 'qj_operate@http://localhost:3002/remoteEntry.js',
         'qj-monitor': 'qj_monitor@http://localhost:3003/remoteEntry.js',
+        'qj-monitor-vue': 'qj_monitor_vue@http://localhost:3004/remoteEntry.js',
         's-material-vue': 's_material_vue@http://localhost:3004/remoteEntry.js',
       },
       exposes: {},

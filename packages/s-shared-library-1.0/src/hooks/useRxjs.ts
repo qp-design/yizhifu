@@ -2,6 +2,10 @@
 import { BehaviorSubject } from 'rxjs';
 import { MATERIALS_TYPE } from '../react-dnd/types';
 
+interface behaviorType {
+    id: number;
+    type?: string
+}
 export interface NodeGraph {
     type: string;
     id: number;
@@ -16,7 +20,8 @@ class LowCodeGraph {
     // 正在活动的Id
     activedId: number | undefined;
     // 活动类型
-    behaviorId$: BehaviorSubject<number> = new BehaviorSubject<number>(0);
+    behaviorId$: BehaviorSubject<behaviorType> = new BehaviorSubject<behaviorType>({ id: 0 });
+
     // 数据
     lowCodeGraph: Array<NodeGraph>;
 
@@ -43,27 +48,29 @@ class LowCodeGraph {
     // 新增节点
     addNode(item: MATERIALS_TYPE) {
         ++this.materialId;
+        this.activedId = this.materialId;
         const node = this.computed(item);
         this.lowCodeGraph.push(node);
-        this.behaviorId$.next(this.materialId);
+        this.behaviorId$.next({ id: this.materialId });
     }
 
     // 更新节点
     updateNode(allValues: any) {
         const activedId = this.activedId || this.materialId;
+        console.log('60===============>', activedId);
         const index = this.lowCodeGraph.findIndex((item) => item.id === activedId);
         this.lowCodeGraph[index].props = {
             ...this.lowCodeGraph[index].props,
             ...allValues
         };
-        this.behaviorId$.next(activedId);
+        this.behaviorId$.next({id: activedId, type: 'update'});
     }
 
     // 删除节点
     deleteNode(id: number) {
         const index = this.lowCodeGraph.findIndex((item) => item.id === id);
         this.lowCodeGraph.splice(index, 1);
-        this.behaviorId$.next(id);
+        this.behaviorId$.next({id, type: 'delete'});
     }
 }
 

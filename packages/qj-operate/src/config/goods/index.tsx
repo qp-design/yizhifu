@@ -1,9 +1,8 @@
 import {FieldType, NamePath, Wrapper} from '@brushes/components';
-import { Button, FormInstance, Form } from 'antd';
-import React, {useState, useEffect} from 'react';
+import { Button, FormInstance } from 'antd';
+import React, {useState} from 'react';
 import Modal from 'antd/es/modal/Modal';
 import {GoodsJsx} from './goods';
-import {useLowCodeGraph} from 'qj-shared-library';
 export const formConfig: Array<FieldType> = [
   {
     label: '选择模版',

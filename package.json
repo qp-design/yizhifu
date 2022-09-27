@@ -6,7 +6,7 @@
   ],
   "type": "module",
   "scripts": {
-    "stop": "kill-port --port 3001,3002,3003,8888",
+    "stop": "kill-port --port 3001,3002,3003,3004,8888",
     "start": "lerna run --parallel start",
     "build": "lerna run build",
     "serve": "lerna run --parallel serve",

@@ -1,5 +1,5 @@
 // @ts-ignore
-import {DropJsx} from 'qj-shared-library';
+// import {DropJsx} from 'qj-shared-library';
 import MonitorComponent from './monitor-component';
 import React from 'react';
 import './index.scss'
@@ -8,9 +8,9 @@ export default () => {
     <div
       className='monitor'
     >
-      <DropJsx>
+      {/*<DropJsx>*/}
         <MonitorComponent/>
-      </DropJsx>
+      {/*</DropJsx>*/}
     </div>
   )
 };
