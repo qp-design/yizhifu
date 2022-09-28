@@ -34,8 +34,8 @@
     "@brushes/materials": "^0.0.24",
     "@brushes/store": "^1.0.37",
     "cross-env": "^7.0.3",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
     "sass-loader": "^13.0.2",
     "vue": "^3.2.39"
   }
