@@ -7,7 +7,7 @@ import {RDnDProvider} from 'qj-shared-library';
 import {materialsList} from './mock'
 import {QjIcon} from '@brushes/components'
 // @ts-ignore
-import {DragJsx, DragImpl} from 'qj-shared-library';
+import {DragJsx} from 'qj-shared-library';
 import './index.scss';
 import {Tabs} from 'antd';
 import {AppstoreOutlined, LayoutOutlined} from '@ant-design/icons';
@@ -32,13 +32,8 @@ const App = () => {
       ), key: 'item-2', children: <TemplateC/>
     },
   ];
-  // const drag = useRef();
-  // useEffect(() => {
-  //   DragImpl(drag.current);
-  // }, [])
 
   return (
-    // <div ref={drag} className={'materials-container'}>
       <div className={'materials-container'}>
       <Tabs items={items} className={'tabs'}/>
     </div>
@@ -46,3 +41,33 @@ const App = () => {
 }
 
 export default App;
+// =======
+// const Materials = () => {
+//   return (
+//     <DragJsx>
+//       {
+//         materialsList.map(item => (
+//           <div data-item={JSON.stringify(item)}
+//                key={item.type} className={'item'}>
+//             {/*<DragJsx {...item}>*/}
+//               <QjIcon style={{ fontSize: '40px', fontWeight: 500 }} name={item.icon}></QjIcon>
+//             {/*</DragJsx>*/}
+//             <div className={'title'}>{ item.name }</div>
+//           </div>
+//         ))
+//       }
+//     </DragJsx>
+//   )
+// }
+//
+// const DefaultMaterials = () => {
+//   return (
+//     <div className={'materials-container'}>
+//       <h1>基础组件</h1>
+//       <Materials/>
+//     </div>
+//   )
+// }
+//
+// export default DefaultMaterials;
+// >>>>>>> 95fa23998824e7e6e15eb8262051451cff775826

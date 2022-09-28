@@ -4,6 +4,7 @@ import {Collapse} from 'antd';
 import {QjIcon} from '@brushes/components'
 import {config} from "../../mock/config";
 import './index.scss';
+import {DragJsx} from "qj-shared-library";
 
 const {Panel} = Collapse;
 
@@ -38,7 +39,7 @@ const ModuleC: React.FC = () => {
           })
         }
       </Collapse>
-      <div className={'content'}>
+      <DragJsx className={'content'}>
         {
           config[classifyIndex]['children'][detailIndex]['group'].map(item => {
             return (
@@ -49,7 +50,7 @@ const ModuleC: React.FC = () => {
             )
           })
         }
-      </div>
+      </DragJsx>
     </div>
   )
 }

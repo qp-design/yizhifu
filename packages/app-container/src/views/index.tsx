@@ -1,8 +1,8 @@
-import React, {lazy, Suspense, useEffect, useRef} from 'react'
+import React, {lazy, useEffect, useRef} from 'react'
 import './index.scss';
 import { createApp } from 'vue';
 // @ts-ignore
-import {DropImpl, DropJsx, DropJsxImpl, RDnDProvider} from 'qj-shared-library';
+import {DropImpl, DropJsx} from 'qj-shared-library';
 // @ts-ignore
 import Monitor from 'qj-monitor/monitor'
 // @ts-ignore
@@ -13,23 +13,19 @@ const Operate = lazy(() => import('qj-operate/operate'))
 const Material = lazy(() => import('qj-material/material'))
 
 const Root = () => {
+
   useEffect(() => {
     createApp(MonitorVue).mount(document.querySelector('#simulate'));
   }, []);
 
-  DropImpl();
-
   return (
-    // <RDnDProvider>
       <div className={'design-container'}>
         <Material/>
-        <DropJsxImpl>
+        <DropJsx>
           <div id={'simulate'}></div>
-         {/*<MonitorVue/>*/}
-        </DropJsxImpl>
+        </DropJsx>
         <Operate/>
       </div>
-    // </RDnDProvider>
   )
 }
 
