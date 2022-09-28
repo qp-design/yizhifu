@@ -46,11 +46,11 @@ class LowCodeGraph {
     }
 
     // 新增节点
-    addNode(item: MATERIALS_TYPE) {
+    addNode(item: MATERIALS_TYPE, index: number) {
         ++this.materialId;
         this.activedId = this.materialId;
         const node = this.computed(item);
-        this.lowCodeGraph.push(node);
+        this.lowCodeGraph.splice(index, 0, node);
         this.behaviorId$.next({ id: this.materialId });
     }
 
