@@ -21,7 +21,7 @@ code {
   .monitor {
     overflow-y: auto;
     #simulate{
-      padding: 10px;
+      padding: 10px 10px 30px 10px;
       max-width: 375px;
       width: 375px;
       margin: 60px auto;
@@ -30,6 +30,33 @@ code {
       -webkit-box-shadow: 0 0 28px 0 #ccc;
       box-shadow: 0 0 28px 0 #ccc;
       position: relative;
+      .default-iphone{
+        position: absolute;
+        top: 650px;
+        left: -150px;
+        width: 150px;
+        display: flex;
+        .title{
+          font-size: 12px;
+          display: block;
+          color: #595961;
+          font-weight: 400;
+          width: 90px;
+          height: 30px;
+          line-height: 30px;
+          text-align: center;
+          background: #e3e5e9;
+          border-radius: 4px;
+        }
+        .line{
+          display: block;
+          width: 60px;
+          height: 2px;
+          position: relative;
+          top: 15px;
+          border-top: 1px dashed #bbb;
+        }
+      }
       &>.item{
         width: 100%;
         padding: 10px 0;

@@ -5,16 +5,12 @@ import {RDnDProvider} from 'qj-shared-library';
 import { materialsList } from './mock'
 import { QjIcon } from '@brushes/components'
 // @ts-ignore
-import {DragJsx, DragImpl} from 'qj-shared-library';
+import {DragJsx} from 'qj-shared-library';
 import './index.scss';
 
 const Materials = () => {
-  const drag = useRef();
-  useEffect(() => {
-    DragImpl(drag.current);
-  }, [])
   return (
-    <div ref={drag} className={'materials'}>
+    <DragJsx>
       {
         materialsList.map(item => (
           <div data-item={JSON.stringify(item)}
@@ -26,26 +22,9 @@ const Materials = () => {
           </div>
         ))
       }
-    </div>
+    </DragJsx>
   )
 }
-
-// const Materials = () => {
-//   return (
-//     <div className={'materials'}>
-//       {
-//         materialsList.map(item => (
-//           <div key={item.type} className={'item'}>
-//             <DragJsx {...item}>
-//               <QjIcon style={{ fontSize: '40px', fontWeight: 500 }} name={item.icon}></QjIcon>
-//             </DragJsx>
-//             <div className={'title'}>{ item.name }</div>
-//           </div>
-//         ))
-//       }
-//     </div>
-//   )
-// }
 
 const DefaultMaterials = () => {
   return (

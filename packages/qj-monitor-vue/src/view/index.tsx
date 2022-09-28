@@ -20,6 +20,10 @@ const MonitorVue = defineComponent({
     const { node, actived } = this.state;
     return (
       <>
+        <div className={'default-iphone'}>
+          <span className={'title'}>Iphone8首屏</span>
+          <span className={'line'}></span>
+        </div>
         {
           node.map(({id, props, type, name}, index: number) => {
             const MaterialsComponent = get(materirals, type, noop);
