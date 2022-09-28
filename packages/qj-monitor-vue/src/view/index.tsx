@@ -15,7 +15,6 @@ const MonitorVue = defineComponent({
       switchHandler,
       handlerImpl,
     }
-
   },
   render() {
     const { node, actived } = this.state;
