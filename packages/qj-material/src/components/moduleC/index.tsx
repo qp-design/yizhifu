@@ -13,9 +13,14 @@ const ModuleC: React.FC = () => {
   const [classifyIndex, setClassifyIndex] = useState(0);
   const [detailIndex, setDetailIndex] = useState(0);
 
+  const [lists, setList] = useState(() => {
+    return config[0]['children'][0]['group']
+  });
+
   const handleClassify = (typeIndex, itemIndex) => {
     setClassifyIndex(typeIndex)
     setDetailIndex(itemIndex)
+    setList([...config[typeIndex]['children'][itemIndex]['group']])
   }
 
   return (
@@ -41,11 +46,11 @@ const ModuleC: React.FC = () => {
       </Collapse>
       <DragJsx className={'content'}>
         {
-          config[classifyIndex]['children'][detailIndex]['group'].map(item => {
+          lists.map((item, index) => {
             return (
-              <div className={'contentItem'} key={item.id}>
-                <QjIcon style={{ fontSize: '40px', fontWeight: 500 }} name={item.icon}></QjIcon>
-                <b>{item.label}</b>
+              <div key={index} className={'contentItem'} data-item={JSON.stringify(item)} >
+                <QjIcon style={{ fontSize: '40px', fontWeight: 500, display: 'block' }} name={item.icon}></QjIcon>
+                <b>{item.name}</b>
               </div>
             )
           })

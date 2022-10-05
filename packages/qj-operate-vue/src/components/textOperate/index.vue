@@ -6,6 +6,7 @@
 import { defineComponent } from 'vue';
 import Options from './views/options.vue'
 import './common/style/init.css'
+import 'ant-design-vue/dist/antd.css'
 
 export default defineComponent({
   name: 'App',
@@ -15,6 +16,6 @@ export default defineComponent({
 });
 </script>
 
-<style lang="less">
+<style>
 
 </style>

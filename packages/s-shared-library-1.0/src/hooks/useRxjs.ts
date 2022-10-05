@@ -1,10 +1,10 @@
 // 数据控制
 import { BehaviorSubject } from 'rxjs';
-import { MATERIALS_TYPE } from '../react-dnd/types';
+import { MATERIALS_TYPE } from '../sortable/types';
 
 interface behaviorType {
     id: number;
-    type?: string
+    type?: string;
 }
 export interface NodeGraph {
     type: string;
@@ -70,7 +70,7 @@ class LowCodeGraph {
     deleteNode(id: number) {
         const index = this.lowCodeGraph.findIndex((item) => item.id === id);
         this.lowCodeGraph.splice(index, 1);
-        this.behaviorId$.next({id, type: 'delete'});
+        this.behaviorId$.next({ id, type: 'delete' });
     }
 }
 

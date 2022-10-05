@@ -2,7 +2,15 @@ import React, { useState, useEffect } from 'react';
 import { useFederatedComponent } from '../hooks/useFederatedComponent';
 import './index.scss';
 
-const Material = ({port}) => {
+interface Port {
+  port: {
+    module: string;
+    scope: string;
+    url: string
+  }
+}
+const Material: React.FC<Port> = ({port}) => {
+  // @ts-ignore
   const [{ module, scope, url }, setSystem] = useState({});
 
   const { Component: Materials, errorLoading } = useFederatedComponent(url, scope, module);

@@ -28,7 +28,7 @@ const handleOk = () => {
   </div>
 </template>
 
-<style lang="less" scoped>
+<style lang="scss" scoped>
 .modalC {
   display: inline-block;
 }

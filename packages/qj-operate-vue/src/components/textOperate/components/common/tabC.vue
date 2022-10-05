@@ -33,7 +33,7 @@ export default defineComponent({
   </Tabs>
 </template>
 
-<style lang="less">
+<style lang="scss">
 .tab-c {
   .ant-tabs-nav-list {
     width: 100%;

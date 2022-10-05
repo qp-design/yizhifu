@@ -1,11 +1,11 @@
 <script lang="ts">
 import {defineComponent} from 'vue';
-import TabC from "@/components/common/tabC.vue";
-import ModalC from "@/components/common/modalC.vue";
-import PickColorC from "@/components/common/pickColorC.vue";
+import TabC from "./common/tabC.vue";
+import ModalC from "./common/modalC.vue";
+import PickColorC from "./common/pickColorC.vue";
 import {Card, RadioButton, RadioGroup, Button} from "ant-design-vue";
 import {HolderOutlined, PlusOutlined} from "@ant-design/icons-vue";
-import PageSetting from "@/components/pageSetting.vue";
+import PageSetting from "./pageSetting.vue";
 import draggable from "vuedraggable";
 
 export default defineComponent({
@@ -48,7 +48,7 @@ export default defineComponent({
 </script>
 <template>
   <div class="example">
-    <PageSetting/>
+<!--    <PageSetting/>-->
     <div style="height: 50px;">
       <PickColorC/>
     </div>
@@ -130,11 +130,10 @@ export default defineComponent({
     </tab-c>
   </div>
 </template>
-<style lang="less" scoped>
-@import "../common/style/const.less";
+<style lang="scss" scoped>
 
 .example {
-  padding: @material-gap;
+  padding: 0 15px;
 
 }
 </style>

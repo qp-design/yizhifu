@@ -107,7 +107,7 @@ export default defineComponent({
   </div>
 </template>
 
-<style lang="less">
+<style lang="scss">
 .pick-color-c {
   .btn {
     width: 60px;

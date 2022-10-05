@@ -5,12 +5,12 @@ import { _ } from '@brushes/tools';
 import * as operateVue from 'qj-operate-vue/operate-vue'
 import {NodeGraph} from 'qj-shared-library';
 
-const { get } = _;
+const { get, noop } = _;
 
 const IndexVue = ({defaultValue}: { defaultValue: NodeGraph }) => {
   const ref = useRef();
   useEffect(() => {
-    const AppVue = get(operateVue, defaultValue.type);
+    const AppVue = get(operateVue, defaultValue.type, noop);
     const app = createApp(h(AppVue, {defaultValue}));
     app.mount(ref.current)
 

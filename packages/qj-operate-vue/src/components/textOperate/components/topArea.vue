@@ -19,7 +19,7 @@ export default defineComponent({
   </div>
 </template>
 
-<style lang="less" scoped>
+<style lang="scss" scoped>
   .top-area {
     height: 58px;
     border-bottom: 1px solid #f0f0f0;

@@ -1,24 +1,24 @@
 <script lang="ts">
 import {defineComponent} from 'vue';
-import TopArea from "@/components/topArea.vue";
-import example from "@/components/example.vue";
+// import TopArea from "../components/topArea.vue";
+import example from "../components/example.vue";
 
 export default defineComponent({
   name: 'options',
   components: {
-    TopArea,
+    // TopArea,
     example,
   }
 })
 </script>
 <template>
   <div class="option">
-    <TopArea/>
+<!--    <TopArea/>-->
     <example/>
   </div>
 </template>
 
-<style lang="less" scoped>
+<style lang="scss" scoped>
 .option {
   width: 350px;
   height: 100vh;

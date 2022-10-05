@@ -34,8 +34,7 @@ export default defineComponent({
   </div>
 </template>
 
-<style lang="less">
-@import "../common/style/const.less";
+<style lang="scss">
 
 .page-setting {
   .ant-collapse-item {
