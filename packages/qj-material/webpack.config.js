@@ -1,7 +1,11 @@
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPlugin");
 const {dependencies: deps} = require("./package.json");
+const webpack = require('webpack');
 const path = require("path");
+
+require('dotenv').config()
+
 module.exports = {
   devServer: {
     static: {
@@ -48,25 +52,38 @@ module.exports = {
       name: 'qj_material',
       filename: 'remoteEntry.js',
       exposes: {
-        './material': './src/App',
+        './materials': './src/vue-components',
+        './materialMenu': './src/App',
       },
       shared: {
-        'qj-shared-library': {
-          import: 'qj-shared-library',
-          requiredVersion: require('../s-shared-library-1.0/package.json').version,
+        ...deps,
+        "s-material-vue": {
+          import: "s-material-vue",
+          requiredVersion: require("../s-material-vue/package.json").version,
         },
-        'react': {
+        "qj-shared-library": {
+          import: "qj-shared-library",
+          requiredVersion: require("../s-shared-library-1.0/package.json").version,
+        },
+        "react": {
+          singleton: true,
           requiredVersion: deps.react,
-          singleton: true,
         },
-        'react-dom': {
-          requiredVersion: deps['react-dom'],
+        "react-dom": {
           singleton: true,
-        },
+          requiredVersion: deps["react-dom"],
+        }
       },
     }),
     new HtmlWebPackPlugin({
       template: "./src/index.html",
+    }),
+    new webpack.DefinePlugin({
+      "process.env": {
+        REACT_APP_BASE_URL: JSON.stringify(process.env.REACT_APP_BASE_URL),
+        REACT_APP_SESSION_KEY: JSON.stringify(process.env.REACT_APP_SESSION_KEY),
+        REACT_APP_APPLICATION: JSON.stringify(process.env.REACT_APP_APPLICATION),
+      },
     }),
   ],
 };
