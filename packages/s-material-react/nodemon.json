@@ -1,0 +1,9 @@
+{
+  "restartable": "rs",
+  "verbose": false,
+  "watch": ["src/css/"],
+  "ignore": ["src/**.ts"],
+  "delay": "1000",
+  "exec": "rm -rf css/ && mkdir -p ./css && cp -R ./src/css ./",
+  "ext": "scss"
+}

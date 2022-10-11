@@ -1,0 +1,39 @@
+{
+  "name": "@brushes/mobile-material-react",
+  "version": "0.0.4",
+  "description": "'组件库'",
+  "main": "dist/index.js",
+  "sideEffects": [
+    "*.scss",
+    "*.css"
+  ],
+  "files": [
+    "dist",
+    "css",
+    "iconfont"
+  ],
+  "scripts": {
+    "start": "npm run cp-css && tsc --watch",
+    "cp-css": "rm -rf css/ && mkdir -p ./css && cp -R ./src/css ./",
+    "build": "npm run cp-css && rm -rf dist/ && prettier --write src/ && tsc",
+    "push": "git add . && git commit -m",
+    "postpush": "git push",
+    "prepublishOnly": "echo 我们准备发布npm包",
+    "publishOnly": "npm run build && npm run push",
+    "postpublishOnly": "npm version patch && npm publish && git push"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@brushes/tools": "^1.0.25",
+    "@tarojs/components": "^3.5.4",
+    "@tarojs/taro": "^3.5.4",
+    "@types/node": ">18.0.0",
+    "@zlyboy/wx-formdata": "^1.0.2",
+    "axios": "^0.27.2",
+    "flyio": "^0.6.14",
+    "nodemon": "^2.0.19",
+    "prettier": "^2.7.1",
+    "typescript": ">4.0.0"
+  }
+}

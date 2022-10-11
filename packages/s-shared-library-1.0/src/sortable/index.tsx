@@ -20,7 +20,10 @@ export const DragJsx = ({ children, className }: { children: ReactNode; classNam
             setData: function (/** DataTransfer */ dataTransfer, /** HTMLElement*/ dragEl) {
                 dataTransfer.setData('Text', dragEl.textContent || ''); // `dataTransfer` object of HTML5 DragEvent
             },
-            sort: false // 设为false，禁止sort
+            sort: false, // 设为false，禁止sort
+            onStart() {
+                console.log(25)
+            }
         });
 
         console.log(26, app);
@@ -44,6 +47,7 @@ export const DropJsx = ({ children }: { children: ReactNode }) => {
     useEffect(() => {
         const parentNode = drop.current! as HTMLDivElement;
         const element = parentNode!.querySelector('#simulate') as HTMLDivElement;
+        console.log(51, element)
         new Sortable(element, {
             group: {
                 name: DRAGGABLE_COMPONENT,
