@@ -1,11 +1,11 @@
 import React, { useEffect, useState, memo, useRef } from 'react';
 import { View, Text } from '@tarojs/components';
-import { querySkuNotOnShelf } from '../../store';
+import { querySkuNotOnShelf } from '@brushes/api';
 import { _ } from '@brushes/tools';
 const { isEqual, isEmpty } = _;
 
 interface GoodsType {
-    value: Array<{
+    defaultValue: Array<{
         goodsCode: string | number;
         goodsName: string | number;
         dataPic: string;
@@ -20,14 +20,15 @@ interface GoodsType {
     circular?: number;
     markedPrice?: number;
 }
-const GoodsJsx: React.FC<GoodsType> = ({ value = [], margin, circular, cell, gap = 10, goods = [], markedPrice }) => {
-    const [list, setList] = useState<Array<any>>(value);
+const GoodsJsx: React.FC<GoodsType> = ({ defaultValue = [], margin, circular, cell, gap = 10, goods = [], markedPrice }) => {
+    const [list, setList] = useState<Array<any>>(defaultValue);
     const preGoods = useRef<Array<any>>();
+    console.log(26, )
     useEffect(() => {
         if(isEqual(preGoods.current, goods)) return;
         preGoods.current = goods;
         if(isEmpty(goods)) {
-            setList(value)
+            setList(defaultValue)
             return
         }
         (async () => {
@@ -59,7 +60,7 @@ const GoodsJsx: React.FC<GoodsType> = ({ value = [], margin, circular, cell, gap
     }, [goods]);
 
     return (
-        <View
+        <div
             style={{
                 display: 'grid',
                 gap,
@@ -68,7 +69,7 @@ const GoodsJsx: React.FC<GoodsType> = ({ value = [], margin, circular, cell, gap
             }}
         >
             {list.map((item, index) => (
-                <View
+                <div
                     style={{
                         overflow: 'hidden',
                         borderRadius: circular === 2 ? 0 : '16Px'
@@ -76,25 +77,25 @@ const GoodsJsx: React.FC<GoodsType> = ({ value = [], margin, circular, cell, gap
                     className={'goods'}
                     key={item.goodsCode}
                 >
-                    <View className={`goods-img`} style={{backgroundImage: `url(${item.dataPic})`}}></View>
-                    <View className={'space'}>
-                        <View className={'titleType'}>{item.goodsName}</View>
-                        <View className={'subTitle'}>{item.brandName}</View>
-                        <View className={'price'}>
-                            <Text className={'subPrice'}>¥</Text>
+                    <div className={`goods-img`} style={{backgroundImage: `url(${item.dataPic})`}}></div>
+                    <div className={'space'}>
+                        <div className={'titleType'}>{item.goodsName}</div>
+                        <div className={'subTitle'}>{item.brandName}</div>
+                        <div className={'price'}>
+                            <div className={'subPrice'}>¥</div>
                             {item.pricesetNprice}
                             {markedPrice === 1 && (
-                                <Text className={'markedPrice'}>
-                                    <Text className={'subPrice'}>¥</Text>
+                                <div className={'markedPrice'}>
+                                    <div className={'subPrice'}>¥</div>
                                     {item.pricesetMakeprice}
-                                </Text>
+                                </div>
                             )}
-                        </View>
+                        </div>
                         {/*<QjIcon name={'icon-icon2'} />*/}
-                    </View>
-                </View>
+                    </div>
+                </div>
             ))}
-        </View>
+        </div>
     );
 };
 

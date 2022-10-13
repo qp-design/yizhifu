@@ -1,7 +1,9 @@
 import { useEffect, useState } from 'react';
 
 const urlCache = new Set();
-const useDynamicScript = url => {
+// host
+// 加载js标签
+const useDynamicScript = (url: string) => {
   const [ready, setReady] = useState(false);
   const [errorLoading, setErrorLoading] = useState(false);
 

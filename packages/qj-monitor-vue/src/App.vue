@@ -1,5 +1,5 @@
 <template>
-    <MonitorVue></MonitorVue>
+    <MonitorVue :materials="materials"></MonitorVue>
 </template>
 
 <script lang="ts">
@@ -7,6 +7,12 @@ import {defineComponent} from 'vue'
 import MonitorVue from './view'
 
 export default defineComponent({
+  props: {
+    materials: {
+      type: Object,
+      default: {}
+    }
+  },
   components: {
     MonitorVue
   }

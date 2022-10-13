@@ -1,8 +1,8 @@
-import React, { useEffect, useState, memo, useRef } from 'react';
+import React, { useState, memo } from 'react';
 import { View } from '@tarojs/components';
 
 interface TextsType {
-    value: Array<{
+    defaultValue: Array<{
         title: string | number;
         subTitle: string | number;
     }>;
@@ -12,10 +12,10 @@ interface TextsType {
     circular?: number;
 }
 
-const TextJsx: React.FC<TextsType> = ({ value = [], margin, circular, cell, gap = 10 }) => {
-    const [list, setList] = useState<Array<any>>(value);
+const TextJsx: React.FC<TextsType> = ({ defaultValue = [], margin, circular, cell, gap = 10 }) => {
+    const [list, setList] = useState<Array<any>>(defaultValue);
     return (
-        <View
+        <div
             style={{
                 display: 'grid',
                 gap,
@@ -24,7 +24,7 @@ const TextJsx: React.FC<TextsType> = ({ value = [], margin, circular, cell, gap 
             }}
         >
             {list.map((item, index) => (
-                <View
+                <div
                     style={{
                         overflow: 'hidden',
                         borderRadius: circular === 1 ? 8 : 0
@@ -32,13 +32,13 @@ const TextJsx: React.FC<TextsType> = ({ value = [], margin, circular, cell, gap 
                     className={'goods'}
                     key={index}
                 >
-                    <View className={'space'}>
-                        <View className={'titleType'}>{item.title}</View>
-                        <View className={'subTitle'}>{item.subTitle}</View>
-                    </View>
-                </View>
+                    <div className={'space'}>
+                        <div className={'titleType'}>{item.title}</div>
+                        <div className={'subTitle'}>{item.subTitle}</div>
+                    </div>
+                </div>
             ))}
-        </View>
+        </div>
     );
 };
 

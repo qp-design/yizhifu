@@ -38,7 +38,6 @@
     "@ant-design/icons-vue": "^6.1.0",
     "classnames": "^2.3.2",
     "dotenv": "^16.0.2",
-    "qj-shared-library": "^0.0.1",
     "sass-loader": "^13.0.2",
     "vue": "^3.2.19"
   }

@@ -55,11 +55,11 @@ module.exports = {
       },
       shared: {
         ...deps,
-        'qj-shared-library': {
-          import: 'qj-shared-library',
-          requiredVersion: require('../s-shared-library-1.0/package.json').version,
+        "qj-shared-library": {
+          import: "qj-shared-library",
+          requiredVersion: require("../s-shared-library-1.0/package.json").version,
         },
-        react: {
+        "react": {
           singleton: true,
           requiredVersion: deps.react,
         },

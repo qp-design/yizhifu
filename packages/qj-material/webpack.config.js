@@ -23,7 +23,6 @@ module.exports = {
   resolve: {
     extensions: [".tsx", ".ts", ".jsx", ".js", ".json"],
   },
-
   module: {
     rules: [
       {
@@ -52,8 +51,8 @@ module.exports = {
       name: 'qj_material',
       filename: 'remoteEntry.js',
       exposes: {
-        './materials': './src/vue-components',
-        './materialMenu': './src/App',
+        './materials': './src/react-components',
+        './menu': './src/App',
       },
       shared: {
         ...deps,
@@ -61,13 +60,18 @@ module.exports = {
           import: "s-material-vue",
           requiredVersion: require("../s-material-vue/package.json").version,
         },
+        // "s-material-react": {
+        //   import: "s-material-react",
+        //   requiredVersion: require("../s-material-react/package.json").version,
+        // },
         "qj-shared-library": {
           import: "qj-shared-library",
           requiredVersion: require("../s-shared-library-1.0/package.json").version,
         },
         "react": {
-          singleton: true,
-          requiredVersion: deps.react,
+          eager: true,
+          // singleton: true,
+          // requiredVersion: deps.react,
         },
         "react-dom": {
           singleton: true,

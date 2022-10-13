@@ -5,6 +5,7 @@ import {QjIcon} from '@brushes/components'
 import {config} from "../../mock/config";
 import './index.scss';
 import {DragJsx} from "qj-shared-library";
+import MenuItem from './menuItem';
 
 const {Panel} = Collapse;
 
@@ -14,13 +15,23 @@ const ModuleC: React.FC = () => {
   const [detailIndex, setDetailIndex] = useState(0);
 
   const [lists, setList] = useState(() => {
-    return config[0]['children'][0]['group']
+    return [config[0]['children'][0]['group']]
   });
 
   const handleClassify = (typeIndex, itemIndex) => {
     setClassifyIndex(typeIndex)
     setDetailIndex(itemIndex)
-    setList([...config[typeIndex]['children'][itemIndex]['group']])
+
+    console.log(24, typeIndex, itemIndex)
+    // config[typeIndex]['children'][itemIndex]['group']
+    const item = config[typeIndex]['children'][itemIndex]['group'];
+    setList(prevState => {
+      prevState[itemIndex] = item;
+      return prevState
+    })
+
+    // setList([...config[typeIndex]['children'][itemIndex]['group']])
+    //
   }
 
   return (
@@ -44,18 +55,13 @@ const ModuleC: React.FC = () => {
           })
         }
       </Collapse>
-      <DragJsx className={'content'}>
-        {
-          lists.map((item, index) => {
-            return (
-              <div key={index} className={'contentItem'} data-item={JSON.stringify(item)} >
-                <QjIcon style={{ fontSize: '40px', fontWeight: 500, display: 'block' }} name={item.icon}></QjIcon>
-                <b>{item.name}</b>
-              </div>
-            )
-          })
-        }
-      </DragJsx>
+      {
+        lists.map((item, index) =>
+          <div key={index} style={{ display: index === detailIndex ? 'block' : 'none'}}>
+            <MenuItem key={index} lists={item}></MenuItem>
+          </div>
+        )
+      }
     </div>
   )
 }

@@ -14,6 +14,7 @@ export const DragJsx = ({ children, className }: { children: ReactNode; classNam
                 put: false // 不允许拖拽进这个列表
             },
             swapThreshold: 1,
+            dataIdAttr: 'data-item',
             dragClass: 'sortable-drag',
             fallbackOnBody: false,
             removeCloneOnHide: true,
@@ -21,12 +22,8 @@ export const DragJsx = ({ children, className }: { children: ReactNode; classNam
                 dataTransfer.setData('Text', dragEl.textContent || ''); // `dataTransfer` object of HTML5 DragEvent
             },
             sort: false, // 设为false，禁止sort
-            onStart() {
-                console.log(25)
-            }
-        });
 
-        console.log(26, app);
+        });
 
         return () => {
             app.destroy();
@@ -58,6 +55,7 @@ export const DropJsx = ({ children }: { children: ReactNode }) => {
             sort: false, // 设为false，禁止sort
             // 列表内元素顺序更新的时候触发
             onSort: function (/**Event*/ evt) {
+                // console.log(evt, evt.item.dataset)
                 const { item } = evt.item.dataset;
                 const num = evt.newDraggableIndex || 0;
                 monitorInstance.addNode(JSON.parse(item || '""'), num - 1);

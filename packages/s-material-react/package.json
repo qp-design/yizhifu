@@ -1,5 +1,5 @@
 {
-  "name": "@brushes/mobile-material-react",
+  "name": "s-material-react",
   "version": "0.0.4",
   "description": "'组件库'",
   "main": "dist/index.js",
@@ -29,11 +29,11 @@
     "@tarojs/components": "^3.5.4",
     "@tarojs/taro": "^3.5.4",
     "@types/node": ">18.0.0",
-    "@zlyboy/wx-formdata": "^1.0.2",
-    "axios": "^0.27.2",
+    "@types/react": "^18.0.0",
     "flyio": "^0.6.14",
     "nodemon": "^2.0.19",
     "prettier": "^2.7.1",
+    "react": "^18.0.0",
     "typescript": ">4.0.0"
   }
 }

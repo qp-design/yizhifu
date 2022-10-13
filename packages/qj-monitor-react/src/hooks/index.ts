@@ -1,47 +1,37 @@
-import { reactive, watchEffect} from 'vue';
 import {NodeGraph, useLowCodeGraph} from 'qj-shared-library';
 import { _ } from '@brushes/tools';
+import {useEffect, useState} from 'react';
 
 const {noop} = _;
 
-interface stateInterface {
-  actived: Number;
-  node: Array<NodeGraph>
-}
+export default function useMonitorReact() {
 
-export default function useMonitorVue() {
-
-  const state = reactive<stateInterface>({
-    actived: -1,
-    node: [] as any
-  })
+  const [actived, setActived] = useState(-1);
+  const [node, setNode] = useState<Array<NodeGraph>>([] as any);
   const expGraph = useLowCodeGraph(1);
 
-  console.log(20, expGraph);
-  const stopWatch = watchEffect((onCleanup) => {
-    onCleanup(() => {
-      // 先执行的 清楚副作用
-      console.log('before')
-      sub.unsubscribe()
-    })
+  useEffect(() => {
     const sub = expGraph.behaviorId$.subscribe((parmas) => {
       const { lowCodeGraph } = expGraph;
       const { id, type } = parmas
       if(type === 'select') return;
-      state.actived = id;
-      state.node = [...lowCodeGraph]
+      setActived(id);
+      setNode([...lowCodeGraph])
     })
-  })
-  // 停止监听
-  // const stop = () => stopWatch()
+
+    return () => {
+      sub.unsubscribe()
+    }
+  }, [actived]);
+
 
   const switchHandler = (id: number) => {
     expGraph.activedId = id;
-    state.actived = id;
+    setActived(id);
     expGraph.behaviorId$.next({id, type: 'select'})
   }
 
-  const handlerImpl = (e: any, id: number, index: number) => {
+  const handlerImpl = (e: any, id: number, index) => {
     const target = e.target.closest('span');
     if (!target) return;
 
@@ -49,28 +39,27 @@ export default function useMonitorVue() {
     callbackImpl(code, id, index);
   }
 
-  const deleteHandler = (id: number) => {
+  const deleteHandler = (id) => {
     expGraph.deleteNode(id);
   }
 
-  const xiayiHandler = (index: number) => {
+  const xiayiHandler = (index) => {
     changeIndex(index, index+1)
   }
 
-  const shangyiHandler = (index: number) => {
+  const shangyiHandler = (index) => {
     changeIndex(index, index-1)
   }
 
-  const changeIndex = (index: number, prevIndex: number) => {
+  const changeIndex = (index, prevIndex) => {
     const { lowCodeGraph } = expGraph;
     const prev = lowCodeGraph[prevIndex];
     lowCodeGraph[prevIndex] = lowCodeGraph[index];
     lowCodeGraph[index] = prev;
-    state.node = [...lowCodeGraph]
+    setNode([...lowCodeGraph])
   }
 
-  const callbackImpl = (code: string, id: number, index: number) => {
-    console.log(code, id);
+  const callbackImpl = (code, id, index) => {
     switch (code) {
       case 'delete':
         deleteHandler(id);
@@ -88,7 +77,8 @@ export default function useMonitorVue() {
   }
 
   return {
-    state,
+    actived,
+    node,
     switchHandler,
     handlerImpl,
   }

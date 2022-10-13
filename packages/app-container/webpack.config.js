@@ -47,27 +47,23 @@ module.exports = {
       name: "app_container",
       filename: "remoteEntry.js",
       remotes: {
-        'qj-material': 'qj_material@http://localhost:3001/remoteEntry.js',
-        'qj-operate': 'qj_operate@http://localhost:3002/remoteEntry.js',
-        'qj-monitor': 'qj_monitor@http://localhost:3003/remoteEntry.js',
-        'qj-monitor-vue': 'qj_monitor_vue@http://localhost:3004/remoteEntry.js',
-        's-material-vue': 's_material_vue@http://localhost:3004/remoteEntry.js',
+        'qj-monitor-react': 'qj_monitor_react@http://localhost:3006/remoteEntry.js',
       },
       exposes: {},
       shared: {
         ...deps,
-        'qj-shared-library': {
-          import: 'qj-shared-library',
-          requiredVersion: require('../s-shared-library-1.0/package.json').version,
+        "qj-shared-library": {
+          import: "qj-shared-library",
+          requiredVersion: require("../s-shared-library-1.0/package.json").version,
         },
-        react: {
+        "react": {
           singleton: true,
           requiredVersion: deps.react,
         },
         "react-dom": {
           singleton: true,
           requiredVersion: deps["react-dom"],
-        },
+        }
       },
     }),
     new HtmlWebPackPlugin({

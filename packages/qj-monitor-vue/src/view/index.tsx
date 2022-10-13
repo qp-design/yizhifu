@@ -1,6 +1,6 @@
 import {defineComponent} from "vue";
 import classNames from 'classnames';
-import * as materirals from 's-material-vue'
+// import * as materirals from 's-material-vue'
 import useMonitorVue from '../hooks';
 import { _ } from '@brushes/tools';
 import { ToTopOutlined, VerticalAlignBottomOutlined, DeleteOutlined } from '@ant-design/icons-vue';
@@ -8,12 +8,19 @@ const { get, noop } = _;
 
 const MonitorVue = defineComponent({
   name: 'Monitor',
-  setup() {
+  props: {
+    materials: {
+      type: Object,
+      default: {}
+    }
+  },
+  setup(props) {
     const { state, switchHandler, handlerImpl } = useMonitorVue();
     return {
       state,
       switchHandler,
       handlerImpl,
+      materials: props.materials
     }
   },
   render() {
@@ -26,7 +33,7 @@ const MonitorVue = defineComponent({
         </div>
         {
           node.map(({id, props, type, name}, index: number) => {
-            const MaterialsComponent = get(materirals, type, noop);
+            const MaterialsComponent = get(this.materials, type, noop);
             return (
               <div key={id} class={'monitor-node'}>
                 {

@@ -1,43 +1,49 @@
-import React, {lazy, useEffect} from 'react'
+import React, {useEffect, useState} from 'react'
 import './index.scss';
-import { createApp } from 'vue';
 // @ts-ignore
-import {DropImpl, DropJsx} from 'qj-shared-library';
+import {DropJsx, useLowCodeGraph} from 'qj-shared-library';
 // @ts-ignore
-import Monitor from 'qj-monitor/monitor'
-// @ts-ignore
-import MonitorVue from 'qj-monitor-vue/monitor-vue';
+import Monitor from 'qj-monitor-react/monitor';
 import FederationModule from './federationModule';
 // @ts-ignore
-// const Operate = lazy(() => import('qj-operate/operate'))
+// import MonitorVue from 'qj-monitor-vue/monitor-vue';
 // @ts-ignore
-// const Material = lazy(() => import('qj-material/material'))
+import './index.scss';
 
 const Root = () => {
-
+  const expGraph = useLowCodeGraph(1);
+  const [materials, setMaterials] = useState({});
   useEffect(() => {
-    createApp(MonitorVue).mount(document.querySelector('#simulate')!);
-  }, []);
+    const sub = expGraph.allMaterials$.subscribe((parmas) => {
+      console.log(19, parmas)
+      setMaterials(parmas)
+    })
 
+    return () => {
+      sub.unsubscribe()
+    }
+  });
   return (
     <div className={'design-container'}>
       <FederationModule
         port={{
           url: `http://localhost:3001/remoteEntry.js`,
           scope: 'qj_material',
-          module: './material',
+          module: './menu',
         }}
       />
-      {/*<DropJsx>*/}
-        <div id={'simulate'}></div>
-      {/*</DropJsx>*/}
-      {/*<FederationModule*/}
-      {/*  port={{*/}
-      {/*    url: `http://localhost:3002/remoteEntry.js`,*/}
-      {/*    scope: 'qj_operate',*/}
-      {/*    module: './operate',*/}
-      {/*  }}*/}
-      {/*/>*/}
+      <DropJsx>
+        <div id={"simulate"}>
+          <Monitor materials={materials}/>
+        </div>
+      </DropJsx>
+      <FederationModule
+        port={{
+          url: `http://localhost:3002/remoteEntry.js`,
+          scope: 'qj_operate',
+          module: './operate',
+        }}
+      />
     </div>
   )
 }

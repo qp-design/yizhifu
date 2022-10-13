@@ -1,6 +1,7 @@
 // 数据控制
 import { BehaviorSubject } from 'rxjs';
 import { MATERIALS_TYPE } from '../sortable/types';
+import {ReactElement, ReactNode} from 'react';
 
 interface behaviorType {
     id: number;
@@ -12,6 +13,10 @@ export interface NodeGraph {
     props: { [v: string]: unknown };
 }
 
+interface MaterialsType {
+    [v: string]: any
+}
+
 class LowCodeGraph {
     // 模型id
     modeId: string;
@@ -21,19 +26,20 @@ class LowCodeGraph {
     activedId: number | undefined;
     // 活动类型
     behaviorId$: BehaviorSubject<behaviorType> = new BehaviorSubject<behaviorType>({ id: 0 });
-
     // 数据
     lowCodeGraph: Array<NodeGraph>;
+    // 所有的物料组件
+    allMaterials$: BehaviorSubject<MaterialsType> = new BehaviorSubject<MaterialsType>({ materials: {} });
 
     constructor(expId: string) {
         this.modeId = expId;
         this.materialId = 0;
         this.lowCodeGraph = [];
+        // this.allMaterials = {}
     }
 
-    init(id: number = 0, node: Array<NodeGraph> = []) {
-        this.materialId = id;
-        this.lowCodeGraph = node;
+    init(materials: MaterialsType = {}) {
+        this.allMaterials$.next(materials);
     }
 
     // 节点配置
