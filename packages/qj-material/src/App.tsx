@@ -1,17 +1,11 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import './index.scss';
 import {Tabs} from 'antd';
 import {AppstoreOutlined, LayoutOutlined} from '@ant-design/icons';
 import TemplateC from "./components/templateC";
 import ModuleC from "./components/moduleC";
-import {useLowCodeGraph} from 'qj-shared-library';
-import * as Materials from 's-material-react'
 
 const App = () => {
-  const expGraph = useLowCodeGraph(1);
-  useEffect(() => {
-    expGraph.init(Materials);
-  }, [])
   const items = [
     {
       label: (

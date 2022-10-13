@@ -1,28 +1,21 @@
-import React, {useEffect, useState} from 'react'
+import React, {useRef} from 'react'
 import './index.scss';
 // @ts-ignore
-import {DropJsx, useLowCodeGraph} from 'qj-shared-library';
+import {DropJsx, useLowCodeGraph, FederationModule} from 'qj-shared-library';
 // @ts-ignore
 import Monitor from 'qj-monitor-react/monitor';
-import FederationModule from './federationModule';
 // @ts-ignore
 // import MonitorVue from 'qj-monitor-vue/monitor-vue';
 // @ts-ignore
 import './index.scss';
 
 const Root = () => {
-  const expGraph = useLowCodeGraph(1);
-  const [materials, setMaterials] = useState({});
-  useEffect(() => {
-    const sub = expGraph.allMaterials$.subscribe((parmas) => {
-      console.log(19, parmas)
-      setMaterials(parmas)
-    })
-
-    return () => {
-      sub.unsubscribe()
-    }
+  const remoteAssets = useRef({
+    url: `http://localhost:3001/remoteEntry.js`,
+    scope: 'qj_material',
+    module: './materials',
   });
+
   return (
     <div className={'design-container'}>
       <FederationModule
@@ -34,7 +27,7 @@ const Root = () => {
       />
       <DropJsx>
         <div id={"simulate"}>
-          <Monitor materials={materials}/>
+          <Monitor remoteAssets={remoteAssets.current}/>
         </div>
       </DropJsx>
       <FederationModule

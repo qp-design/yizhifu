@@ -1,17 +1,9 @@
 import React from 'react';
-import { useFederationModule } from 'qj-shared-library';
+import { useFederationModule, remoteAssetsType } from '../hooks';
 
-interface Port {
-  port: {
-    module: string;
-    scope: string;
-    url: string
-  };
-  id?: number;
-  type?: string;
-}
-const Material: React.FC<Port> = ({port, ...props}) => {
+export const FederationModule: React.FC<remoteAssetsType> = ({port, ...props}) => {
   const { Component, errorLoading } = useFederationModule(port)
+  console.log(6, props)
   return (
     <React.Suspense fallback="Loading System">
       {errorLoading
@@ -20,5 +12,3 @@ const Material: React.FC<Port> = ({port, ...props}) => {
     </React.Suspense>
   );
 };
-
-export default Material;

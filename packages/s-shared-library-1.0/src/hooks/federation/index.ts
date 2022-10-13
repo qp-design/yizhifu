@@ -1,14 +1,14 @@
 import { useState, useEffect } from 'react';
 import { useFederatedComponent } from './useFederatedComponent';
 
-interface Port {
+export interface remoteAssetsType {
   module: string;
   scope: string;
   url: string
 }
 
-export const useFederationModule = (port: Port) => {
-  const [{ module, scope, url }, setSystem] = useState<Port>({} as any);
+export const useFederationModule = (port: remoteAssetsType) => {
+  const [{ module, scope, url }, setSystem] = useState<remoteAssetsType>({} as any);
 
   const { Component, errorLoading } = useFederatedComponent(url, scope, module);
 

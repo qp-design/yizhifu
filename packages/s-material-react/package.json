@@ -30,6 +30,7 @@
     "@tarojs/taro": "^3.5.4",
     "@types/node": ">18.0.0",
     "@types/react": "^18.0.0",
+    "antd-mobile": "^5.24.0",
     "flyio": "^0.6.14",
     "nodemon": "^2.0.19",
     "prettier": "^2.7.1",
