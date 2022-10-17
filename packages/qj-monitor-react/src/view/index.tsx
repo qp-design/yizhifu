@@ -2,9 +2,14 @@ import React from 'react';
 import {QjIcon} from '@brushes/components';
 import classNames from 'classnames';
 import useMonitorReact from '../hooks';
+// @ts-ignore
 import { remoteAssetsType, FederationModule } from 'qj-shared-library';
+import { _ } from '@brushes/tools';
+const {noop, get} = _;
 
-const MonitorComponent = ({remoteAssets = {}} : { remoteAssets?: remoteAssetsType}) => {
+const MonitorComponent = (
+  {remoteAssets = {}, materials = {}} :
+  { remoteAssets?: remoteAssetsType; materials: object}) => {
   const {
     actived,
     node,
@@ -20,7 +25,7 @@ const MonitorComponent = ({remoteAssets = {}} : { remoteAssets?: remoteAssetsTyp
       </div>
       {
         node.map(({id, props, type, name}, index: number) => {
-          // const MaterialsComponent = get(materials, type, noop);
+          const MaterialsComponent = get(materials, type, noop);
           return (
             <div key={id} className={'monitor-node'}>
               {
@@ -36,12 +41,13 @@ const MonitorComponent = ({remoteAssets = {}} : { remoteAssets?: remoteAssetsTyp
               }
               <div onClick={() => switchHandler(id)}
                    className={classNames('content', {'actived': id === actived})}>
-                <FederationModule
-                  id={id}
-                  type={type}
-                  {...props}
-                  port={remoteAssets}
-                />
+                {/*<FederationModule*/}
+                {/*  id={id}*/}
+                {/*  type={type}*/}
+                {/*  {...props}*/}
+                {/*  port={remoteAssets}*/}
+                {/*/>*/}
+                <MaterialsComponent id={id} {...props}/>
               </div>
               {
                 actived === id && (

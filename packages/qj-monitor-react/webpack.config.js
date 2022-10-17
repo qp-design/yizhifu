@@ -1,14 +1,24 @@
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPlugin");
+const path = require("path");
 
 const deps = require("./package.json").dependencies;
 module.exports = {
   output: {
-    publicPath: "http://localhost:3006/",
+    // publicPath: "http://localhost:3006/",
   },
 
   resolve: {
     extensions: [".tsx", ".ts", ".jsx", ".js", ".json"],
+    alias: {
+      "@tarojs/components": path.resolve('./src/components/index.ts'),
+      // "@tarojs/components": path.resolve(
+      //   __dirname,
+      //   "../../",
+      //   "node_modules",
+      //   "@brushes/monitor"
+      // ),
+    },
   },
 
   devServer: {
@@ -18,7 +28,6 @@ module.exports = {
       'Access-Control-Allow-Origin': '*',
     },
   },
-
   module: {
     rules: [
       {
@@ -53,8 +62,10 @@ module.exports = {
       shared: {
         ...deps,
         "qj-shared-library": {
-          import: "qj-shared-library",
+          import: "@brushes/qj-shared-library",
+          singleton: true,
           requiredVersion: require("../s-shared-library-1.0/package.json").version,
+          // requiredVersion: deps["@brushes/qj-shared-library"],
         },
         react: {
           singleton: true,
