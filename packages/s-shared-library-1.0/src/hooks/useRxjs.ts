@@ -12,7 +12,7 @@ export interface NodeGraph {
     props: { [v: string]: unknown };
 }
 
-interface MaterialsType {
+export interface MaterialsType {
     [v: string]: any
 }
 
@@ -28,10 +28,17 @@ class LowCodeGraph {
     // 数据
     lowCodeGraph: Array<NodeGraph>;
 
+    // 所有的物料组件
+    allMaterials$: BehaviorSubject<MaterialsType> = new BehaviorSubject<MaterialsType>({ materials: {} });
+
     constructor(expId: string) {
         this.modeId = expId;
         this.materialId = 0;
         this.lowCodeGraph = [];
+    }
+
+    init(materials: MaterialsType = {}) {
+        this.allMaterials$.next(materials);
     }
 
     // 节点配置
@@ -61,7 +68,7 @@ class LowCodeGraph {
             ...this.lowCodeGraph[index].props,
             ...allValues
         };
-        this.behaviorId$.next({id: activedId, type: 'update'});
+        this.behaviorId$.next({ id: activedId, type: 'update' });
     }
 
     // 删除节点

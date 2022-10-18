@@ -5,7 +5,7 @@ const {dependencies: deps} = require("./package.json");
 
 module.exports = {
   output: {
-    publicPath: "http://localhost:3004/",
+    publicPath: "http://localhost:3005/",
   },
 
   resolve: {
@@ -13,7 +13,7 @@ module.exports = {
   },
 
   devServer: {
-    port: 3004,
+    port: 3005,
     historyApiFallback: true,
     headers: {
       'Access-Control-Allow-Origin': '*',
@@ -58,9 +58,9 @@ module.exports = {
       },
       shared: {
         ...deps,
-        'qj-shared-library': {
-          import: 'qj-shared-library',
-          requiredVersion: require('../s-shared-library-1.0/package.json').version,
+        "qj-shared-library": {
+          import: "@brushes/qj-shared-library",
+          requiredVersion: deps["@brushes/qj-shared-library"],
         },
         vue: {
           singleton: true,

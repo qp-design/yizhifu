@@ -19,5 +19,5 @@ export default defineComponent({
 });
 </script>
 <style lang="scss">
-@import "s-material-vue/css";
+
 </style>

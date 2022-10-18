@@ -48,13 +48,16 @@ module.exports = {
       filename: "remoteEntry.js",
       remotes: {
         'qj-monitor-react': 'qj_monitor_react@http://localhost:3006/remoteEntry.js',
+        'qj-monitor-vue': 'qj_monitor_vue@http://localhost:3005/remoteEntry.js',
       },
       exposes: {},
       shared: {
         ...deps,
         "qj-shared-library": {
-          import: "qj-shared-library",
+          singleton: true,
+          import: "@brushes/qj-shared-library",
           requiredVersion: require("../s-shared-library-1.0/package.json").version,
+          // requiredVersion: deps["@brushes/qj-shared-library"],
         },
         "react": {
           singleton: true,

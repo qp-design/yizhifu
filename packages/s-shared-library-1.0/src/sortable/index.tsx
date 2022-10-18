@@ -21,8 +21,7 @@ export const DragJsx = ({ children, className }: { children: ReactNode; classNam
             setData: function (/** DataTransfer */ dataTransfer, /** HTMLElement*/ dragEl) {
                 dataTransfer.setData('Text', dragEl.textContent || ''); // `dataTransfer` object of HTML5 DragEvent
             },
-            sort: false, // 设为false，禁止sort
-
+            sort: false // 设为false，禁止sort
         });
 
         return () => {
@@ -43,8 +42,8 @@ export const DropJsx = ({ children }: { children: ReactNode }) => {
 
     useEffect(() => {
         const parentNode = drop.current! as HTMLDivElement;
-        const element = parentNode!.querySelector('#simulate') as HTMLDivElement;
-        console.log(51, element)
+        const element = parentNode!.querySelector('#simulate-qj-monitor-20221014') as HTMLDivElement;
+        console.log(51, element);
         new Sortable(element, {
             group: {
                 name: DRAGGABLE_COMPONENT,
@@ -55,12 +54,10 @@ export const DropJsx = ({ children }: { children: ReactNode }) => {
             sort: false, // 设为false，禁止sort
             // 列表内元素顺序更新的时候触发
             onSort: function (/**Event*/ evt) {
-                // console.log(evt, evt.item.dataset)
                 const { item } = evt.item.dataset;
                 const num = evt.newDraggableIndex || 0;
                 monitorInstance.addNode(JSON.parse(item || '""'), num - 1);
-                const itemNode = element.querySelectorAll('.contentItem');
-                element.removeChild(itemNode[0]);
+                element.removeChild(evt.item);
             }
         });
     }, [drop.current]);

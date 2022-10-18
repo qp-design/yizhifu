@@ -4,14 +4,10 @@
   "scripts": {
     "build": "webpack --mode production",
     "build:dev": "webpack --mode development",
-    "start": "webpack-dev-server --mode development",
+    "start": "webpack-dev-server --mode development --live-reload",
     "start:live": "webpack-dev-server --open --mode development --live-reload"
   },
   "license": "MIT",
-  "author": {
-    "name": "Jack Herrington",
-    "email": "jherr@pobox.com"
-  },
   "devDependencies": {
     "@babel/core": "^7.15.8",
     "@babel/plugin-transform-runtime": "^7.15.8",
@@ -36,6 +32,7 @@
   },
   "dependencies": {
     "@ant-design/icons-vue": "^6.1.0",
+    "@brushes/qj-shared-library": "^0.0.2",
     "classnames": "^2.3.2",
     "dotenv": "^16.0.2",
     "sass-loader": "^13.0.2",
