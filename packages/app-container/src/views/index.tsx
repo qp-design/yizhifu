@@ -2,13 +2,14 @@ import React, {useEffect, useState} from 'react'
 import './index.scss';
 import { createApp } from 'vue';
 // @ts-ignore
-import {DropJsx, useLowCodeGraph, FederationModule} from 'qj-shared-library';
+import {DropJsx, useLowCodeGraph} from 'qj-shared-library';
 // @ts-ignore
 import Monitor from 'qj-monitor-react/monitor';
 // @ts-ignore
 import MonitorVue from 'qj-monitor-vue/monitor-vue';
 import OperateJsx from './operateJsx';
 import './index.scss';
+import Material from './material';
 
 const Root = () => {
   const id = window.location.pathname;
@@ -63,9 +64,7 @@ const Root = () => {
 
   return (
     <div className={'design-container'}>
-      <FederationModule
-        port={opts[0] || {}}
-      />
+      <Material port={opts[0] || {}}/>
       <DropJsx>
         <div id={"simulate-qj-monitor-20221014"}>
           {/*<MonitorVue materials={materials}/>*/}
