@@ -1,8 +1,9 @@
 import React, { ReactNode } from 'react';
-import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
-export const Wrapper = ({ children }: { children: ReactNode }) => {
-    // Create a client
-    const queryClient = new QueryClient();
 
-    return <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>;
+interface Props {
+    children: ReactNode | any;
+    [v: string]: unknown;
+}
+export const View: React.FC<Props> = ({ children, ...props }) => {
+    return React.createElement('div', Object.assign({}, props), children);
 };

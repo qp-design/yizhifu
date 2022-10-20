@@ -13,7 +13,14 @@ export interface NodeGraph {
 }
 
 export interface MaterialsType {
-    [v: string]: any
+    [v: string]: any;
+}
+
+export interface PageMaterialType {
+    nodeGraph: Array<NodeGraph>;
+    page: string;
+    version: string;
+    pageConfig: { [v: string]: unknown };
 }
 
 class LowCodeGraph {
@@ -26,7 +33,8 @@ class LowCodeGraph {
     // 活动类型
     behaviorId$: BehaviorSubject<behaviorType> = new BehaviorSubject<behaviorType>({ id: 0 });
     // 数据
-    lowCodeGraph: Array<NodeGraph>;
+    // lowCodeGraph: Array<NodeGraph>;
+    lowCodeGraph: PageMaterialType;
 
     // 所有的物料组件
     allMaterials$: BehaviorSubject<MaterialsType> = new BehaviorSubject<MaterialsType>({ materials: {} });
@@ -34,7 +42,13 @@ class LowCodeGraph {
     constructor(expId: string) {
         this.modeId = expId;
         this.materialId = 0;
-        this.lowCodeGraph = [];
+        // this.lowCodeGraph = [];
+        this.lowCodeGraph = {
+            nodeGraph: [],
+            page: '',
+            version: '',
+            pageConfig: {}
+        };
     }
 
     init(materials: MaterialsType = {}) {
@@ -55,7 +69,7 @@ class LowCodeGraph {
         ++this.materialId;
         this.activedId = this.materialId;
         const node = this.computed(item);
-        this.lowCodeGraph.splice(index, 0, node);
+        this.lowCodeGraph.nodeGraph.splice(index, 0, node);
         this.behaviorId$.next({ id: this.materialId });
     }
 
@@ -63,9 +77,9 @@ class LowCodeGraph {
     updateNode(allValues: any) {
         const activedId = this.activedId || this.materialId;
         console.log('60===============>', activedId);
-        const index = this.lowCodeGraph.findIndex((item) => item.id === activedId);
-        this.lowCodeGraph[index].props = {
-            ...this.lowCodeGraph[index].props,
+        const index = this.lowCodeGraph.nodeGraph.findIndex((item) => item.id === activedId);
+        this.lowCodeGraph.nodeGraph[index].props = {
+            ...this.lowCodeGraph.nodeGraph[index].props,
             ...allValues
         };
         this.behaviorId$.next({ id: activedId, type: 'update' });
@@ -73,8 +87,8 @@ class LowCodeGraph {
 
     // 删除节点
     deleteNode(id: number) {
-        const index = this.lowCodeGraph.findIndex((item) => item.id === id);
-        this.lowCodeGraph.splice(index, 1);
+        const index = this.lowCodeGraph.nodeGraph.findIndex((item) => item.id === id);
+        this.lowCodeGraph.nodeGraph.splice(index, 1);
         this.behaviorId$.next({ id, type: 'delete' });
     }
 }

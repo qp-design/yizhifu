@@ -57,10 +57,14 @@ module.exports = {
         './monitor-vue': './src/App.vue'
       },
       shared: {
-        ...deps,
+        // ...deps,
         "qj-shared-library": {
           import: "@brushes/qj-shared-library",
           requiredVersion: deps["@brushes/qj-shared-library"],
+        },
+        react: {
+          singleton: true,
+          requiredVersion: deps.react,
         },
         vue: {
           singleton: true,

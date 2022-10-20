@@ -16,7 +16,7 @@ export default function useMonitorReact() {
       const { id, type } = parmas
       if(type === 'select') return;
       setActived(id);
-      setNode([...lowCodeGraph])
+      setNode([...lowCodeGraph.nodeGraph])
     })
 
     return () => {
@@ -53,10 +53,10 @@ export default function useMonitorReact() {
 
   const changeIndex = (index, prevIndex) => {
     const { lowCodeGraph } = expGraph;
-    const prev = lowCodeGraph[prevIndex];
-    lowCodeGraph[prevIndex] = lowCodeGraph[index];
-    lowCodeGraph[index] = prev;
-    setNode([...lowCodeGraph])
+    const prev = lowCodeGraph.nodeGraph[prevIndex];
+    lowCodeGraph.nodeGraph[prevIndex] = lowCodeGraph.nodeGraph[index];
+    lowCodeGraph.nodeGraph[index] = prev;
+    setNode([...lowCodeGraph.nodeGraph])
   }
 
   const callbackImpl = (code, id, index) => {

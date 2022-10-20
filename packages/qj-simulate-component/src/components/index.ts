@@ -1,5 +1,2 @@
-export * from './iconfont';
-export * from './form';
-export * from './spacing';
-export * from './wrapper';
-export * from './detailImage';
+export * from './view';
+export * from './text';

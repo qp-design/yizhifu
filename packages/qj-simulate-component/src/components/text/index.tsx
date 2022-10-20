@@ -2,8 +2,8 @@ import React, { ReactNode } from 'react';
 
 interface Props {
     children: ReactNode;
-    [v:string]: unknown
+    [v: string]: unknown;
 }
-export const View: React.FC<Props> = ({ children, ...props }) => {
-    return <div {...props}>{children}</div>;
+export const Text: React.FC<Props> = ({ children, ...props }) => {
+    return React.createElement('span', Object.assign({}, props), children);
 };

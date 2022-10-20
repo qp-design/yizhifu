@@ -1,6 +1,5 @@
 import {defineComponent} from "vue";
 import classNames from 'classnames';
-// import * as materirals from 's-material-vue'
 import useMonitorVue from '../hooks';
 import { _ } from '@brushes/tools';
 import { ToTopOutlined, VerticalAlignBottomOutlined, DeleteOutlined } from '@ant-design/icons-vue';

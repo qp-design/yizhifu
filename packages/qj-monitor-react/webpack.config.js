@@ -60,7 +60,7 @@ module.exports = {
         './monitor': "./src/view/index.tsx"
       },
       shared: {
-        ...deps,
+        // ...deps,
         "qj-shared-library": {
           import: "@brushes/qj-shared-library",
           singleton: true,
