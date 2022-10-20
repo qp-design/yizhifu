@@ -15,8 +15,8 @@
     "@babel/preset-env": "^7.15.8",
     "@babel/preset-react": "^7.14.5",
     "@babel/preset-typescript": "^7.10.4",
-    "@types/react": "^17.0.0",
-    "@types/react-dom": "^17.0.0",
+    "@types/react": "^18.0.0",
+    "@types/react-dom": "^18.0.0",
     "autoprefixer": "^10.1.0",
     "babel-loader": "^8.2.2",
     "css-loader": "^6.3.0",
@@ -30,10 +30,12 @@
     "webpack-dev-server": "^4.3.1"
   },
   "dependencies": {
-    "@brushes/qj-shared-library": "^0.0.2",
+    "@brushes/qj-shared-library": "^0.0.3",
+    "@brushes/store": "^1.0.37",
     "classnames": "^2.3.2",
-    "react": "^17.0.0",
-    "react-dom": "^17.0.0",
+    "dotenv": "^16.0.3",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
     "sass-loader": "^13.0.2",
     "vue": "^3.2.39"
   }

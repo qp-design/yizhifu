@@ -1,14 +1,27 @@
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPlugin");
-
+const webpack = require('webpack');
 const deps = require("./package.json").dependencies;
+require('dotenv').config()
 module.exports = {
   output: {
     publicPath: "http://localhost:8888/",
   },
-
   resolve: {
     extensions: [".tsx", ".ts", ".jsx", ".js", ".json"],
+    // globals: {
+    //   ENABLE_INNER_HTML: true,
+    //   ENABLE_ADJACENT_HTML: true,
+    //   ENABLE_SIZE_APIS: true,
+    //   ENABLE_TEMPLATE_CONTENT: true,
+    //   ENABLE_MUTATION_OBSERVER: true,
+    //   ENABLE_CLONE_NODE: true,
+    //   ENABLE_CONTAINS: true,
+    //   'ts-jest': {
+    //     diagnostics: false,
+    //     tsConfig: 'tsconfig.test.json'
+    //   }
+    // },
   },
 
   devServer: {
@@ -52,12 +65,15 @@ module.exports = {
       },
       exposes: {},
       shared: {
-        ...deps,
         "qj-shared-library": {
           singleton: true,
           import: "@brushes/qj-shared-library",
           requiredVersion: require("../s-shared-library-1.0/package.json").version,
           // requiredVersion: deps["@brushes/qj-shared-library"],
+        },
+        "vue": {
+          singleton: true,
+          requiredVersion: deps.vue,
         },
         "react": {
           singleton: true,
@@ -71,6 +87,20 @@ module.exports = {
     }),
     new HtmlWebPackPlugin({
       template: "./src/index.html",
+    }),
+    new webpack.DefinePlugin({
+      ENABLE_INNER_HTML: JSON.stringify(true),
+      ENABLE_ADJACENT_HTML: JSON.stringify(true),
+      ENABLE_SIZE_APIS: JSON.stringify(true),
+      ENABLE_TEMPLATE_CONTENT: JSON.stringify(true),
+      ENABLE_MUTATION_OBSERVER: JSON.stringify(true),
+      ENABLE_CLONE_NODE: JSON.stringify(true),
+      ENABLE_CONTAINS: JSON.stringify(true),
+      "process.env": {
+        REACT_APP_BASE_URL: JSON.stringify(process.env.REACT_APP_BASE_URL),
+        REACT_APP_SESSION_KEY: JSON.stringify(process.env.REACT_APP_SESSION_KEY),
+        REACT_APP_APPLICATION: JSON.stringify(process.env.REACT_APP_APPLICATION),
+      },
     }),
   ],
 };

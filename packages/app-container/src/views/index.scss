@@ -1,4 +1,5 @@
 //@import "@brushes/mobile-material-react/css";
+@import "~antd/dist/antd.css";
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
@@ -133,5 +134,28 @@ code {
   }
   .dragActived{
     background: rgb(222, 235, 255);
+  }
+}
+
+.operateConfig{
+  background: #fff;
+  .config-top{
+    padding: 10px 20px;
+    border-bottom: solid 1px #efefef;
+  }
+  .pageTitle{
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1;
+    margin: 10px 0 5px 0;
+  }
+  .ant-collapse-content-box{ padding-bottom: 0 !important;}
+  .inner-operate{
+    border-top: solid 1px #efefef;
+    padding: 18px;
+    .title{ font-size: 18px; margin-bottom: 12px; font-weight: 500}
+    .info{
+      color: #777;
+    }
   }
 }

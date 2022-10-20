@@ -1,13 +1,15 @@
 import React, {useEffect, useState} from 'react'
 import './index.scss';
+import { createApp } from 'vue';
 // @ts-ignore
 import {DropJsx, useLowCodeGraph, FederationModule} from 'qj-shared-library';
 // @ts-ignore
 import Monitor from 'qj-monitor-react/monitor';
 // @ts-ignore
-// import MonitorVue from 'qj-monitor-vue/monitor-vue';
-// @ts-ignore
+import MonitorVue from 'qj-monitor-vue/monitor-vue';
+import OperateJsx from './operateJsx';
 import './index.scss';
+
 const Root = () => {
   const id = window.location.pathname;
   const [materials, setMaterials] = useState({});
@@ -17,10 +19,15 @@ const Root = () => {
     const sub = expGraph.allMaterials$.subscribe((parmas) => {
       setMaterials(parmas)
     })
+
     return () => {
       sub.unsubscribe()
     }
   });
+
+  useEffect(() => {
+    // createApp(MonitorVue).mount(document.querySelector('#simulate-qj-monitor-20221014'));
+  }, []);
 
   useEffect(() => {
     let arr = [] as any
@@ -61,13 +68,11 @@ const Root = () => {
       />
       <DropJsx>
         <div id={"simulate-qj-monitor-20221014"}>
+          {/*<MonitorVue materials={materials}/>*/}
           <Monitor materials={materials}/>
-          {/*<Monitor remoteAssets={remoteAssets.current}/>*/}
         </div>
       </DropJsx>
-      <FederationModule
-        port={opts[1] || {}}
-      />
+      <OperateJsx port={opts[1] || {}}/>
     </div>
   )
 }
