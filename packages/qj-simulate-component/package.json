@@ -14,7 +14,7 @@
   ],
   "scripts": {
     "start": "tsc --watch",
-    "build": "prettier --write src/ && tsc",
+    "build": "rm -rf dist/ && prettier --write src/ && tsc",
     "push": "git add . && git commit -m",
     "postpush": "git push",
     "prepublishOnly": "echo 我们准备发布npm包",
