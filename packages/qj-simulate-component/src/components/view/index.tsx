@@ -4,6 +4,6 @@ interface Props {
     children: ReactNode | any;
     [v: string]: unknown;
 }
-export const View: React.FC<Props> = ({ children, ...props }) => {
-    return React.createElement('div', Object.assign({}, props), children);
+export const View = ({ children, ...props } : Props) => {
+    return <div {...props}> { children }</div>;
 };

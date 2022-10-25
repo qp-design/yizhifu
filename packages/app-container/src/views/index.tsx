@@ -10,7 +10,6 @@ import MonitorVue from 'qj-monitor-vue/monitor-vue';
 import OperateJsx from './operateJsx';
 import './index.scss';
 import Material from './material';
-
 const Root = () => {
   const id = window.location.pathname;
   const [materials, setMaterials] = useState({});

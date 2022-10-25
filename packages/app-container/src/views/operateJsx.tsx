@@ -25,21 +25,20 @@ const OperateJsx = ({port}: {port: Object}) => {
 
 
   const saveImpl = () => {
-    console.log(28, expGraph.lowCodeGraph)
+    // console.log(28, expGraph.lowCodeGraph)
+    expGraph.lowCodeGraph.nodeGraph = expGraph.lowCodeGraph.nodeGraph.map(item => {
+      return omit(item, 'props.defaultValue')
+    })
+    lowCodeSave({
+      modelTagvalueId: 595,
+      modelTagvalueJson: expGraph.lowCodeGraph,
+      memberCode: 20021000097768,
+      tenantCode: 2021112700000085,
+      channelCode: undefined,
+    }).then(res => {
+      message.success(res.msg)
+    })
   }
-  //   const values = expGraph.lowCodeGraph.nodeGraph.map(item => {
-  //     return omit(item, 'props.defaultValue')
-  //   })
-  //   lowCodeSave({
-  //     modelTagvalueId: 595,
-  //     modelTagvalueJson: values,
-  //     memberCode: 20021000097768,
-  //     tenantCode: 2021112700000085,
-  //     channelCode: undefined,
-  //   }).then(res => {
-  //     message.success(res.msg)
-  //   })
-  // }
 
   return (
     <div className={'operateConfig'}>
