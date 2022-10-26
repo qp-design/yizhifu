@@ -29,6 +29,7 @@ const OperateJsx = ({port}: {port: Object}) => {
     expGraph.lowCodeGraph.nodeGraph = expGraph.lowCodeGraph.nodeGraph.map(item => {
       return omit(item, 'props.defaultValue')
     })
+    console.log(33, expGraph.lowCodeGraph)
     lowCodeSave({
       modelTagvalueId: 595,
       modelTagvalueJson: expGraph.lowCodeGraph,

@@ -13,8 +13,11 @@
     "iconfont"
   ],
   "scripts": {
-    "start": "tsc --watch",
-    "build": "rm -rf dist/ && prettier --write src/ && tsc",
+    "start": "concurrently npm:start:*",
+    "start:ts": "npx tsc --watch",
+    "start:css": "npx nodemon --config ./nodemon.json",
+    "cp-css": "rm -rf css/ && mkdir -p ./css && cp -R ./src/css ./",
+    "build": "npm run cp-css && rm -rf dist/ && prettier --write src/ && tsc",
     "push": "git add . && git commit -m",
     "postpush": "git push",
     "prepublishOnly": "echo 我们准备发布npm包",
@@ -27,8 +30,9 @@
     "react": "^18.0.0"
   },
   "devDependencies": {
-    "@types/react": "^18.0.0",
     "@types/node": ">18.0.0",
+    "@types/react": "^18.0.0",
+    "concurrently": "^7.5.0",
     "prettier": "^2.7.1",
     "typescript": ">4.0.0"
   }
