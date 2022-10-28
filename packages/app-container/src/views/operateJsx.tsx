@@ -7,7 +7,7 @@ import {Button, Space} from 'antd';
 import { lowCodeSave } from '@brushes/store';
 import message from 'antd/es/message';
 
-const { omit } = _;
+const { set } = _;
 
 const OperateJsx = ({port}: {port: Object}) => {
   const expGraph = useLowCodeGraph(1);
@@ -27,7 +27,7 @@ const OperateJsx = ({port}: {port: Object}) => {
   const saveImpl = () => {
     // console.log(28, expGraph.lowCodeGraph)
     expGraph.lowCodeGraph.nodeGraph = expGraph.lowCodeGraph.nodeGraph.map(item => {
-      return omit(item, 'props.defaultValue')
+      return set(item, 'props.defaultValue', [])
     })
     console.log(33, expGraph.lowCodeGraph)
     lowCodeSave({

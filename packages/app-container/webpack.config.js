@@ -4,6 +4,9 @@ const webpack = require('webpack');
 const deps = require("./package.json").dependencies;
 require('dotenv').config()
 module.exports = {
+  experiments: {
+    topLevelAwait: true, // 此处为新增配置
+  },
   output: {
     publicPath: "http://localhost:8888/",
   },

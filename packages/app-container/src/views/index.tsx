@@ -10,6 +10,7 @@ import MonitorVue from 'qj-monitor-vue/monitor-vue';
 import OperateJsx from './operateJsx';
 import './index.scss';
 import Material from './material';
+import Swiper from './view';
 const Root = () => {
   const id = window.location.pathname;
   const [materials, setMaterials] = useState({});
@@ -63,6 +64,7 @@ const Root = () => {
 
   return (
     <div className={'design-container'}>
+      {/*<Swiper/>*/}
       <Material port={opts[0] || {}}/>
       <DropJsx>
         <div id={"simulate-qj-monitor-20221014"}>
