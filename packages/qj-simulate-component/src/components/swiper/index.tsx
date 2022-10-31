@@ -1,5 +1,5 @@
 import React, {memo, ReactNode, useEffect, useState} from 'react';
-import {useComponent} from '../../hooks';
+import { useComponent } from '../../hooks';
 import {getEnv} from '@brushes/api';
 
 interface SwiperType {
@@ -8,11 +8,11 @@ interface SwiperType {
   autoplayInterval: number,
   loop?: boolean,
   children: ReactNode,
-  Swiper: ReactNode
+  // Swiper: ReactNode
 }
 const SwiperJsx = (
   {
-    Swiper,
+    // Swiper,
     indicatorDots = true,
     direction = 'horizontal',
     autoplayInterval,
@@ -20,7 +20,7 @@ const SwiperJsx = (
     children,
     ...props
   }: SwiperType) => {
-  // const { Swiper } = useComponent();
+  const { Swiper } = useComponent();
   const isTaro = getEnv();
   const [swiperProps, setSwiper] = useState({});
 
@@ -45,7 +45,7 @@ const SwiperJsx = (
     setSwiper(propsStyle)
   }, [direction, autoplayInterval, loop, indicatorDots]);
 
-  // if(!Swiper) return null;
+  if(!Swiper) return null;
 
   const obj = { ...swiperProps, ...props };
   return (

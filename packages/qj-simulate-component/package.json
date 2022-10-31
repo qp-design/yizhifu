@@ -30,6 +30,7 @@
     "@tarojs/components": "^3.5.7",
     "@tarojs/plugin-platform-weapp": "^3.5.7",
     "antd-mobile": "^5.24.2",
+    "lodash-es": "^4.17.21",
     "react": "^18.0.0",
     "taro-ui": "^2.3.4"
   },
