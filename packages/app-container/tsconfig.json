@@ -20,8 +20,7 @@
     "isolatedModules": true,
     "noEmit": true,
     "types": [
-      "node",
-      "webpack-env"
+      "node"
     ],
     "jsx": "react-jsx"
   },

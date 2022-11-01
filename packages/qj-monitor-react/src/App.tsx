@@ -5,7 +5,7 @@ import MonitorComponent from './view';
 
 const App = () => (
   <>
-    <MonitorComponent/>
+    <MonitorComponent />
   </>
 );
 ReactDOM.render(<App />, document.getElementById("app"));

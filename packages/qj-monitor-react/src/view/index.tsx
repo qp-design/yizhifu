@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import {QjIcon} from '@brushes/components';
 import classNames from 'classnames';
 import useMonitorReact from '../hooks';
@@ -8,8 +8,8 @@ import { _ } from '@brushes/tools';
 const {noop, get} = _;
 
 const MonitorComponent = (
-  {remoteAssets = {}, materials = {}} :
-  { remoteAssets?: remoteAssetsType; materials: object}) => {
+  { materials = {}} :
+  { remoteAssets?: remoteAssetsType; materials?: object}) => {
   const {
     actived,
     node,
@@ -18,7 +18,7 @@ const MonitorComponent = (
   } = useMonitorReact();
 
   return (
-    <>
+    <Suspense fallback={<p>加载中……</p>}>
       <div className={'default-iphone'}>
         <span className={'title'}>Iphone8首屏</span>
         <span className={'line'}></span>
@@ -60,7 +60,7 @@ const MonitorComponent = (
           );
         })
       }
-    </>
+    </Suspense>
   )
 }
 

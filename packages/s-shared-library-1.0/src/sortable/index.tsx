@@ -43,7 +43,6 @@ export const DropJsx = ({ children }: { children: ReactNode }) => {
     useEffect(() => {
         const parentNode = drop.current! as HTMLDivElement;
         const element = parentNode!.querySelector('#simulate-qj-monitor-20221014') as HTMLDivElement;
-        console.log(51, element);
         new Sortable(element, {
             group: {
                 name: DRAGGABLE_COMPONENT,

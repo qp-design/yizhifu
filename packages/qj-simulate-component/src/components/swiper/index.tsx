@@ -1,63 +1,120 @@
-import React, {memo, ReactNode, useEffect, useState} from 'react';
+import React, {memo, useCallback, useEffect, useState} from 'react';
 import { useComponent } from '../../hooks';
 import {getEnv} from '@brushes/api';
+import { max } from 'lodash-es';
 
-interface SwiperType {
+interface SwiperType<T> {
   indicatorDots?: boolean,
   direction?: 'horizontal' | 'vertical',
   autoplayInterval: number,
   loop?: boolean,
-  children: ReactNode,
-  // Swiper: ReactNode
+  type: number,
+  render: Function,
+  style: { [v:string]: unknown },
+  data: Array<T>
 }
-const SwiperJsx = (
+
+function SwiperJsx<T> (
   {
-    // Swiper,
     indicatorDots = true,
     direction = 'horizontal',
     autoplayInterval,
     loop = true,
-    children,
+    data,
+    type,
+    render,
+    style,
     ...props
-  }: SwiperType) => {
-  const { Swiper } = useComponent();
-  const isTaro = getEnv();
+  }: SwiperType<T>) {
+  const { Swiper, SwiperItem } = useComponent();
   const [swiperProps, setSwiper] = useState({});
+  const [H, setH] = useState(0);
+  const isTaro = getEnv();
 
   useEffect(() => {
     let propsStyle = {}
     if(isTaro) {
       propsStyle = {
-        vertical: direction === 'horizontal',
+        vertical: direction !== 'horizontal',
         interval: autoplayInterval,
         indicatorColor: '#999',
         indicatorActiveColor: '#333',
         circular: loop,
-        indicatorDots
+        indicatorDots,
+        style: {
+          ...style,
+          height: type == 1 ? H : ''
+        }
       }
     } else {
       propsStyle = {
         direction,
         autoplayInterval,
         loop,
+        style
       }
     }
     setSwiper(propsStyle)
-  }, [direction, autoplayInterval, loop, indicatorDots]);
+  }, [direction, autoplayInterval, loop, indicatorDots, H]);
 
-  if(!Swiper) return null;
+  useEffect(() => {
+    if (isTaro && type === 1) {
+      let deviceW: any
 
-  const obj = { ...swiperProps, ...props };
+      try {
+        const sysInfo = wx.getSystemInfoSync();
+        deviceW = sysInfo.windowWidth;
+      } catch (err) {
+      }
+
+      (async () => {
+        let heightArr: Array<any> = []
+        for (let i = 0; i < data.length; i++) {
+          const res = await new Promise((resolve, reject) => {
+            wx.getImageInfo({
+              src: data[i].imgUrl,
+              success(res: any) {
+                resolve(res)
+              }
+            })
+          })
+          heightArr.push(Math.floor(deviceW * res.height / res.width))
+        }
+        console.log(86, max(heightArr))
+        setH(max(heightArr))
+      })()
+    }
+  }, [data]);
+
+  const innerRender = useCallback((item: T, index: number) => {
+    if(isTaro) {
+      return (
+        <SwiperItem key={index}>
+          {
+            render(item)
+          }
+        </SwiperItem>
+      )
+    }
+    return (
+      <Swiper.Item key={index}>
+        {
+          render(item)
+        }
+      </Swiper.Item>
+    )
+  }, []);
+
   return (
     <Swiper
-      { ...obj}
+      { ...{ ...swiperProps, ...props }}
     >
       {
-        children
+        data.map(innerRender)
       }
     </Swiper>
   )
 }
 
 
-export const SwiperComponent = memo(SwiperJsx);
+export const SmoothSwiper = memo(SwiperJsx);
