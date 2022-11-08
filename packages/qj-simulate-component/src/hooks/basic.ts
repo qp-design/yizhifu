@@ -7,17 +7,17 @@ import { useRef, useCallback } from 'react';
 // A quick note regarding `react-hooks/exhaustive-deps`: since wrapper function doesn't
 // change, it's safe to use it as a dependency, it will never trigger other hooks.
 export function useImmutableCallback(callback: any) {
-  const callbackRef = useRef() as any;
-  callbackRef.current = isFunction(callback) ? callback : noop;
-  return useCallback((...args: any) => callbackRef.current(...args), [callbackRef]);
+    const callbackRef = useRef() as any;
+    callbackRef.current = isFunction(callback) ? callback : noop;
+    return useCallback((...args: any) => callbackRef.current(...args), [callbackRef]);
 }
 
 export function useLazyRef(getInitialValue: Function, initialValues = void 0 as any) {
-  const lazyRef = useRef(initialValues);
+    const lazyRef = useRef(initialValues);
 
-  if (lazyRef.current === initialValues) {
-    lazyRef.current = getInitialValue();
-  }
+    if (lazyRef.current === initialValues) {
+        lazyRef.current = getInitialValue();
+    }
 
-  return lazyRef;
+    return lazyRef;
 }

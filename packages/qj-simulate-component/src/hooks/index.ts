@@ -1,2 +1,2 @@
-export * from './basic'
-export * from './useComponent'
+export * from './basic';
+export * from './useComponent';

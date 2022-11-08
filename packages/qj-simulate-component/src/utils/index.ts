@@ -1,1 +1,1 @@
-export * from './fetchResource'
+export * from './fetchResource';
