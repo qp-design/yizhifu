@@ -37,9 +37,12 @@ function dynamicLoadComponent() {
                 const flag = getEnv();
                 let comp = {} as any;
                 if (flag) {
-                    comp = await import('@tarojs/components');
-                    // const [taroCom, taroMobile] = await Promise.all([import('@tarojs/components'), import('antd-mobile')]);
-                    // comp = { ...taroMobile, ...taroCom }
+                    // comp = await import('@tarojs/components');
+                    const [taroCom, taroMobile] = await Promise.all([
+                        import('@tarojs/components'),
+                        import('antd-mobile')
+                    ]);
+                    comp = { ...taroMobile, ...taroCom };
                 } else {
                     const antdComp = await import('antd-mobile');
                     comp = { ...antdComp, View, Text };

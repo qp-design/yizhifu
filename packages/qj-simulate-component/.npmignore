@@ -4,4 +4,3 @@ yarn-lock
 yarn.lock
 .*
 .idea
-tsconfig.json

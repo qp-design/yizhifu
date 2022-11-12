@@ -64,7 +64,6 @@ const Root = () => {
 
   return (
     <div className={'design-container'}>
-      {/*<Swiper/>*/}
       <Material port={opts[0] || {}}/>
       <DropJsx>
         <div id={"simulate-qj-monitor-20221014"}>

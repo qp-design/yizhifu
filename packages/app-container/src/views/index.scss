@@ -23,12 +23,12 @@ code {
     overflow-y: auto;
     #simulate-qj-monitor-20221014{
       //background: #8c8c97;
-      padding: 10px 10px 30px 10px;
+      //padding: 10px 10px 30px 10px;
       max-width: 375px;
       width: 375px;
       margin: 60px auto;
       min-height: 667px;
-      background-color: #fafafa;
+      background-color: #fff;
       -webkit-box-shadow: 0 0 28px 0 #ccc;
       box-shadow: 0 0 28px 0 #ccc;
       position: relative;
@@ -74,7 +74,7 @@ code {
 
       .icon-operate {
         position: absolute;
-        left: 375px;
+        left: 380px;
         width: 120px;
         top: 0;
 
@@ -105,11 +105,11 @@ code {
       }
 
       .component-name-left {
-        left: 375px;
+        left: 380px;
       }
 
       .component-name-right {
-        right: 375px;
+        right: 380px;
       }
 
       .left {

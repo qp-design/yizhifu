@@ -1,4 +1,4 @@
-import { memo, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useComponent } from '../../hooks';
 import { getEnv } from '@brushes/api';
 
@@ -12,9 +12,10 @@ interface SwiperType<T> {
     style: { [v: string]: unknown };
     data: Array<T>;
     imgHeight: { height: number; width: number };
+    [v:string]: unknown
 }
 
-function SwiperJsx<T>({
+export function SmoothSwiper<T>({
     indicatorDots = true,
     direction = 'horizontal',
     autoplayInterval,
@@ -25,7 +26,7 @@ function SwiperJsx<T>({
     style,
     imgHeight,
     ...props
-}: SwiperType<T>) {
+}: SwiperType<T>){
     const { Swiper, SwiperItem } = useComponent();
     const [swiperProps, setSwiper] = useState({});
     const isTaro = getEnv();
@@ -66,5 +67,3 @@ function SwiperJsx<T>({
         </Swiper>
     );
 }
-
-export const SmoothSwiper = memo(SwiperJsx);

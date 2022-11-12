@@ -1,6 +1,6 @@
 {
   "name": "@brushes/qj-simulate-component",
-  "version": "0.0.2",
+  "version": "0.0.5",
   "description": "'组件库'",
   "main": "dist/index.js",
   "sideEffects": [
@@ -27,6 +27,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@brushes/api": "^0.1.2",
     "@tarojs/components": "^3.5.7",
     "@tarojs/plugin-platform-weapp": "^3.5.7",
     "antd-mobile": "^5.24.2",

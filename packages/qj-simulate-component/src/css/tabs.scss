@@ -1,18 +1,18 @@
-.qj-tabs{
-  display: flex;
-  flex-direction: row;
-  .default-item{
-    margin-top: 10px;
-    font-size: 14px;
-    height: 30px;
-    text-align: center;
-    flex: 1;
-    cursor: pointer;
-    border-bottom: solid 1px #ccc;
-  }
-  .actived-item{
-    font-weight: bold;
-    color: #4F7DE2;
-    border-bottom: solid 1px #4F7DE2;
-  }
+.qj-tabs {
+    display: flex;
+    flex-direction: row;
+    .default-item {
+        margin-top: 10px;
+        font-size: 14px;
+        height: 30px;
+        text-align: center;
+        flex: 1;
+        cursor: pointer;
+        border-bottom: solid 1px #ccc;
+    }
+    .actived-item {
+        font-weight: bold;
+        color: #4f7de2;
+        border-bottom: solid 1px #4f7de2;
+    }
 }
