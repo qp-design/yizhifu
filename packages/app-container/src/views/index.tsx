@@ -6,7 +6,7 @@ import {DropJsx} from 'qj-shared-library';
 // @ts-ignore
 import Monitor from 'qj-monitor-react/monitor';
 // @ts-ignore
-import MonitorVue from 'qj-monitor-vue/monitor-vue';
+// import MonitorVue from 'qj-monitor-vue/monitor-vue';
 import OperateJsx from './operateJsx';
 import Material from './material';
 import {useDynamicModule, useLoadMaterial} from '../hooks';

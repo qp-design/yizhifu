@@ -48,8 +48,8 @@ module.exports = {
       name: "app_container",
       filename: "remoteEntry.js",
       remotes: {
-        'qj-monitor-react': 'qj_monitor_react@http://localhost:3006/remoteEntry.js',
-        'qj-monitor-vue': 'qj_monitor_vue@http://localhost:3005/remoteEntry.js',
+        'qj-monitor-react': 'qj_monitor_react@http://monitor.lc.qjclouds.com/remoteEntry.js',
+        // 'qj-monitor-vue': 'qj_monitor_vue@http://localhost:3005/remoteEntry.js',
       },
       exposes: {},
       shared: {

@@ -1,4 +1,6 @@
 # Logs
+packages/app-container/dist
+packages/qj-monitor-react/dist
 logs
 *.log
 npm-debug.log*
