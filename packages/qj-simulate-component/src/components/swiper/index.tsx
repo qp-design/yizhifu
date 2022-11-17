@@ -12,7 +12,7 @@ interface SwiperType<T> {
     style: { [v: string]: unknown };
     data: Array<T>;
     imgHeight: { height: number; width: number };
-    [v:string]: unknown
+    [v: string]: unknown;
 }
 
 export function SmoothSwiper<T>({
@@ -26,7 +26,7 @@ export function SmoothSwiper<T>({
     style,
     imgHeight,
     ...props
-}: SwiperType<T>){
+}: SwiperType<T>) {
     const { Swiper, SwiperItem } = useComponent();
     const [swiperProps, setSwiper] = useState({});
     const isTaro = getEnv();

@@ -1,4 +1,5 @@
 import React from 'react';
+// @ts-ignore
 import { FederationModule } from 'qj-shared-library';
 
 function Material({port} : { port: Object }) {

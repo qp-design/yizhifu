@@ -26,12 +26,39 @@ code {
       //padding: 10px 10px 30px 10px;
       max-width: 375px;
       width: 375px;
-      margin: 60px auto;
+      margin: 50px auto;
       min-height: 667px;
       background-color: #fff;
       -webkit-box-shadow: 0 0 28px 0 #ccc;
       box-shadow: 0 0 28px 0 #ccc;
       position: relative;
+      .monitor-menu{
+        position: fixed;
+        padding: 0;
+        top: 0;
+        list-style: none;
+        text-align: right;
+        height: 36px;
+        line-height: 36px;
+        z-index: 100;
+        display: flex;
+        width: 375px;
+        li{
+          flex: 1;
+          margin: 0 1px;
+          font-weight: 500;
+          cursor: pointer;
+          background: #fff;
+          height: 36px;
+          border-radius: 4px;
+          text-align: center;
+          box-shadow: 2px 2px 4px rgb(100 100 100 / 20%);
+          &.actived{
+            background: #1890ff;
+            color: #fff;
+          }
+        }
+      }
       .default-iphone{
         position: absolute;
         top: 650px;

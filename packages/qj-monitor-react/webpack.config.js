@@ -1,24 +1,11 @@
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPlugin");
-const path = require("path");
 
 const deps = require("./package.json").dependencies;
 module.exports = {
-  output: {
-    // publicPath: "http://localhost:3006/",
-  },
 
   resolve: {
     extensions: [".tsx", ".ts", ".jsx", ".js", ".json"],
-    alias: {
-      "@tarojs/components": path.resolve('./src/components/index.ts'),
-      // "@tarojs/components": path.resolve(
-      //   __dirname,
-      //   "../../",
-      //   "node_modules",
-      //   "@brushes/monitor"
-      // ),
-    },
   },
 
   devServer: {

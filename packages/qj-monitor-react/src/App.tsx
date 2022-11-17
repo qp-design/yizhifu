@@ -1,11 +1,11 @@
-import React from "react";
-import ReactDOM from "react-dom";
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+// import MonitorComponent from './view';
 
-import MonitorComponent from './view';
-
-const App = () => (
-  <>
-    <MonitorComponent />
-  </>
+const root = ReactDOM.createRoot(
+  document.getElementById('app') as HTMLElement
 );
-ReactDOM.render(<App />, document.getElementById("app"));
+
+root.render(
+  <></>
+);

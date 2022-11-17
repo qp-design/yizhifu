@@ -5,7 +5,7 @@
     "build": "webpack --mode production",
     "build:dev": "webpack --mode development",
     "build:start": "cd dist && PORT=8888 npx serve",
-    "start": "webpack serve --open --mode development --live-reload --hot",
+    "start": "NODE_ENV=development webpack serve --open --mode development --live-reload --hot",
     "start:live": "webpack serve --open --mode development --live-reload --hot"
   },
   "license": "MIT",
@@ -33,6 +33,7 @@
     "@babel/plugin-syntax-top-level-await": "^7.14.5",
     "@brushes/qj-shared-library": "^0.0.4",
     "@brushes/store": "^1.0.37",
+    "antd": "^4.24.2",
     "classnames": "^2.3.2",
     "dotenv": "^16.0.3",
     "react": "^18.0.0",

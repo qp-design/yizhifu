@@ -1,15 +1,15 @@
 import React, { Suspense } from 'react';
 import {QjIcon} from '@brushes/components';
 import classNames from 'classnames';
-import useMonitorReact from '../hooks';
-// @ts-ignore
-import { remoteAssetsType, FederationModule } from 'qj-shared-library';
+import {useMonitorReact, useMenu} from '../hooks';
 import { _ } from '@brushes/tools';
-const {noop, get} = _;
+import {Menu} from '../components';
+const {get} = _;
 
 const MonitorComponent = (
-  { materials = {}} :
-  { remoteAssets?: remoteAssetsType; materials?: object}) => {
+  { materials = {} } :
+  { materials: object}) => {
+
   const {
     actived,
     node,
@@ -17,15 +17,18 @@ const MonitorComponent = (
     handlerImpl,
   } = useMonitorReact();
 
+  const { menu, path, switchMenu } = useMenu();
+
   return (
     <Suspense fallback={<p>加载中……</p>}>
+      <Menu menu={menu} path={path} switchMenu={switchMenu}/>
       <div className={'default-iphone'}>
         <span className={'title'}>Iphone8首屏</span>
         <span className={'line'}></span>
       </div>
       {
         node.map(({id, props, type, name}, index: number) => {
-          const MaterialsComponent = get(materials, type, noop);
+          const MaterialsComponent = get(materials, type, () => <div></div>);
           return (
             <div key={id} className={'monitor-node'}>
               {
@@ -41,14 +44,9 @@ const MonitorComponent = (
               }
               <div onClick={() => switchHandler(id)}
                    className={classNames('content', {'actived': id === actived})}>
-                {/*<FederationModule*/}
-                {/*  id={id}*/}
-                {/*  type={type}*/}
-                {/*  {...props}*/}
-                {/*  port={remoteAssets}*/}
-                {/*/>*/}
                 <MaterialsComponent id={id} {...props}/>
               </div>
+              {/*&& path === 'index'*/}
               {
                 actived === id && (
                   <div onClick={(e) => handlerImpl(e, id, index)}>

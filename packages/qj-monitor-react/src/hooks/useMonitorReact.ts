@@ -1,43 +1,35 @@
-import { reactive, watchEffect} from 'vue';
-import {NodeGraph, useLowCodeGraph} from 'qj-shared-library';
+// @ts-ignore
+import {NodeGraph, useLowCodeGraph, gModelMap, PageMaterialType} from 'qj-shared-library';
 import { _ } from '@brushes/tools';
+import {useEffect, useRef, useState} from 'react';
 
 const {noop} = _;
 
-interface stateInterface {
-  actived: Number;
-  node: Array<NodeGraph>
-}
-
-export default function useMonitorVue() {
-
-  const state = reactive<stateInterface>({
-    actived: -1,
-    node: [] as any
-  })
+export function useMonitorReact() {
+  const [actived, setActived] = useState(-1);
+  const [node, setNode] = useState<Array<NodeGraph>>([] as any);
   const expGraph = useLowCodeGraph();
+  const isSwitchPage = useRef(false);
 
-  console.log(20, expGraph);
-  const stopWatch = watchEffect((onCleanup) => {
-    onCleanup(() => {
-      // 先执行的 清楚副作用
-      console.log('before')
-      sub.unsubscribe()
-    })
-    const sub = expGraph.behaviorId$.subscribe((parmas) => {
+  useEffect(() => {
+    const sub = expGraph.behaviorId$.subscribe((params: any) => {
       const { lowCodeGraph } = expGraph;
-      const { id, type } = parmas
-      if(type === 'select') return;
-      state.actived = id;
-      state.node = [...lowCodeGraph]
+      const { id, type } = params;
+      if(type === 'select' && !isSwitchPage.current) return;
+      isSwitchPage.current = false;
+      setActived(id);
+      setNode([...lowCodeGraph.nodeGraph])
     })
-  })
-  // 停止监听
-  // const stop = () => stopWatch()
+
+    return () => {
+      isSwitchPage.current = true
+      sub.unsubscribe()
+    }
+  }, [expGraph]);
 
   const switchHandler = (id: number) => {
     expGraph.activedId = id;
-    state.actived = id;
+    setActived(id);
     expGraph.behaviorId$.next({id, type: 'select'})
   }
 
@@ -63,14 +55,13 @@ export default function useMonitorVue() {
 
   const changeIndex = (index: number, prevIndex: number) => {
     const { lowCodeGraph } = expGraph;
-    const prev = lowCodeGraph[prevIndex];
-    lowCodeGraph[prevIndex] = lowCodeGraph[index];
-    lowCodeGraph[index] = prev;
-    state.node = [...lowCodeGraph]
+    const prev = lowCodeGraph.nodeGraph[prevIndex];
+    lowCodeGraph.nodeGraph[prevIndex] = lowCodeGraph.nodeGraph[index];
+    lowCodeGraph.nodeGraph[index] = prev;
+    setNode([...lowCodeGraph.nodeGraph])
   }
 
   const callbackImpl = (code: string, id: number, index: number) => {
-    console.log(code, id);
     switch (code) {
       case 'delete':
         deleteHandler(id);
@@ -88,7 +79,8 @@ export default function useMonitorVue() {
   }
 
   return {
-    state,
+    actived,
+    node,
     switchHandler,
     handlerImpl,
   }

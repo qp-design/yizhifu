@@ -1,6 +1,6 @@
 {
   "name": "@brushes/qj-simulate-component",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "'组件库'",
   "main": "dist/index.js",
   "sideEffects": [

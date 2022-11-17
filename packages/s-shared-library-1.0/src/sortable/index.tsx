@@ -2,7 +2,7 @@ import Sortable from 'sortablejs';
 import { DRAGGABLE_COMPONENT } from './types';
 import className from 'classnames';
 import React, { ReactNode, useEffect, useRef } from 'react';
-import { useLowCodeGraph } from '../hooks';
+import { PageMaterialType, useLowCodeGraph } from '../hooks';
 
 export const DragJsx = ({ children, className }: { children: ReactNode; className?: string }) => {
     const drag = useRef<HTMLDivElement>(null as any);
@@ -36,8 +36,16 @@ export const DragJsx = ({ children, className }: { children: ReactNode; classNam
     );
 };
 
-export const DropJsx = ({ children }: { children: ReactNode }) => {
-    const monitorInstance = useLowCodeGraph(1);
+export const DropJsx = ({
+    children,
+    pageId,
+    defaultPageConfig
+}: {
+    children: ReactNode;
+    pageId: string;
+    defaultPageConfig: PageMaterialType;
+}) => {
+    const monitorInstance = useLowCodeGraph(pageId, defaultPageConfig);
     const drop = useRef<HTMLDivElement>(null as any);
 
     useEffect(() => {
@@ -59,7 +67,7 @@ export const DropJsx = ({ children }: { children: ReactNode }) => {
                 element.removeChild(evt.item);
             }
         });
-    }, [drop.current]);
+    }, [drop.current, pageId]);
 
     return (
         <div
