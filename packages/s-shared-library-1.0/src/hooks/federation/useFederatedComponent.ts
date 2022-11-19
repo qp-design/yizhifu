@@ -7,7 +7,6 @@ function loadComponent(scope: string, module: string) {
     return async () => {
         // 初始化共享作用域（shared scope）用提供的已知此构建和所有远程的模块填充它
         // Initializes the share scope. This fills it with known provided modules from this build and all remotes
-
         // @ts-ignore
         await __webpack_init_sharing__('default');
         // @ts-ignore
@@ -28,7 +27,6 @@ const componentCache = new Map();
 export const useFederatedComponent = (remoteUrl: string, scope: string, module: string) => {
     const key = `${remoteUrl}-${scope}-${module}`;
     const [Component, setComponent] = useState(null);
-
     const { ready, errorLoading } = useDynamicScript(remoteUrl);
     useEffect(() => {
         if (Component) setComponent(null);

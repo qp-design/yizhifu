@@ -1,22 +1,16 @@
 import {useEffect, useState} from 'react';
 // @ts-ignore
 import {useMaterialGraph} from 'qj-shared-library';
+import {MenuItem} from '../components';
 
 export function useMenu() {
-  const [menu, setMenu] = useState([]);
+  const [menu, setMenu] = useState<Array<MenuItem>>([]);
   const expPageGraph = useMaterialGraph();
   const [path, setPath] = useState('')
-  useEffect(() => {
-    const sub = expPageGraph.menuList$.subscribe((menu: any) => {
-      setMenu(menu)
-    })
-    return () => {
-      sub.unsubscribe()
-    }
-  }, [])
 
   useEffect(() => {
     const sub = expPageGraph.activedPageId$.subscribe((actived: any) => {
+      setMenu(expPageGraph.menuList)
       setPath(actived)
     })
     return () => {
@@ -24,9 +18,9 @@ export function useMenu() {
     }
   }, [])
 
-  const switchMenu = (item: any) => {
+  const switchMenu = (item: MenuItem) => {
     // setActive(index);
-    expPageGraph.setPageIdImpl(item.router)
+    expPageGraph.setPageIdImpl(item.menuOpcode)
   };
 
   return {

@@ -48,16 +48,24 @@ module.exports = {
       name: "app_container",
       filename: "remoteEntry.js",
       remotes: {
-        'qj-monitor-react': 'qj_monitor_react@http://monitor.lc.qjclouds.com/remoteEntry.js',
+        // 'qj-monitor-react': 'qj_monitor_react@http://localhost:3006/remoteEntry.js',
+        'qj-monitor-react': process.env.NODE_ENV === 'development' ?
+          'qj_monitor_react@http://localhost:3006/remoteEntry.js' :'qj_monitor_react@http://monitor.lc.qjclouds.com/remoteEntry.js',
         // 'qj-monitor-vue': 'qj_monitor_vue@http://localhost:3005/remoteEntry.js',
       },
-      exposes: {},
+      exposes: {
+        './low-code': './src/views/index.tsx'
+      },
       shared: {
         "qj-shared-library": {
           singleton: true,
           import: "@brushes/qj-shared-library",
           requiredVersion: require("../s-shared-library-1.0/package.json").version,
           // requiredVersion: deps["@brushes/qj-shared-library"],
+        },
+        "antd": {
+          singleton: true,
+          requiredVersion: deps.antd,
         },
         "vue": {
           singleton: true,
@@ -77,11 +85,8 @@ module.exports = {
       template: "./src/index.html",
     }),
     new webpack.DefinePlugin({
-      "process.env": process.env.NODE_ENV === 'development' ? {
-        REACT_APP_BASE_URL: JSON.stringify(process.env.REACT_APP_BASE_URL),
-        REACT_APP_SESSION_KEY: JSON.stringify(process.env.REACT_APP_SESSION_KEY),
-        REACT_APP_APPLICATION: JSON.stringify(process.env.REACT_APP_APPLICATION),
-      } : {},
+      "process.env": {},
+      // 'process.env': `window._env_` //构建时定义process.env值为window._env_的值
     }),
   ],
 };

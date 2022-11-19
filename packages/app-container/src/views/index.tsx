@@ -9,20 +9,21 @@ import Monitor from 'qj-monitor-react/monitor';
 // import MonitorVue from 'qj-monitor-vue/monitor-vue';
 import OperateJsx from './operateJsx';
 import Material from './material';
-import {useDynamicModule, useLoadMaterial} from '../hooks';
+import {useConfigEnv, useDynamicModule, useLoadMaterial} from '../hooks';
 import './index.scss';
 
 const Root = () => {
+  useConfigEnv()
+  localStorage.setItem('host', 'https://b2coptfa10b0d4f03f4ff48c571f14558fa068.saas.qjclouds.com/')
   const id = window.location.pathname;
   const materials = useLoadMaterial('1');
   const { modules, pageId, defaultPageConfig } = useDynamicModule('1')
-
   useEffect(() => {
     // createApp(MonitorVue).mount(document.querySelector('#simulate-qj-monitor-20221014'));
   }, []);
 
   // 没有拿到配置信息
-  if(!pageId) return;
+  // if(!pageId) return;
 
   return (
     <div className={'design-container'}>

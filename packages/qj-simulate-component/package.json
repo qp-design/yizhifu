@@ -1,6 +1,6 @@
 {
   "name": "@brushes/qj-simulate-component",
-  "version": "0.0.6",
+  "version": "0.0.9",
   "description": "'组件库'",
   "main": "dist/index.js",
   "sideEffects": [
@@ -27,13 +27,12 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@brushes/api": "^0.1.2",
+    "@brushes/api": "^0.1.9",
     "@tarojs/components": "^3.5.7",
     "@tarojs/plugin-platform-weapp": "^3.5.7",
     "antd-mobile": "^5.24.2",
     "lodash-es": "^4.17.21",
-    "react": "^18.0.0",
-    "taro-ui": "^2.3.4"
+    "react": "^18.0.0"
   },
   "devDependencies": {
     "@types/node": ">18.0.0",

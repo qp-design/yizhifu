@@ -30,9 +30,8 @@
     "webpack-dev-server": "^4.3.1"
   },
   "dependencies": {
-    "@babel/plugin-syntax-top-level-await": "^7.14.5",
-    "@brushes/qj-shared-library": "^0.0.4",
-    "@brushes/store": "^1.0.37",
+    "@brushes/api": "^0.1.9",
+    "@brushes/qj-shared-library": "^0.0.5",
     "antd": "^4.24.2",
     "classnames": "^2.3.2",
     "dotenv": "^16.0.3",

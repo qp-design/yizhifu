@@ -26,14 +26,14 @@ code {
       //padding: 10px 10px 30px 10px;
       max-width: 375px;
       width: 375px;
-      margin: 50px auto;
+      margin: 10px auto;
       min-height: 667px;
       background-color: #fff;
       -webkit-box-shadow: 0 0 28px 0 #ccc;
       box-shadow: 0 0 28px 0 #ccc;
       position: relative;
       .monitor-menu{
-        position: fixed;
+        position: sticky;
         padding: 0;
         top: 0;
         list-style: none;
@@ -41,6 +41,7 @@ code {
         height: 36px;
         line-height: 36px;
         z-index: 100;
+        margin-bottom: 5px;
         display: flex;
         width: 375px;
         li{

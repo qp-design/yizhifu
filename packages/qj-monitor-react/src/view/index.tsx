@@ -48,7 +48,7 @@ const MonitorComponent = (
               </div>
               {/*&& path === 'index'*/}
               {
-                actived === id && (
+                actived === id && node.length > 1 && (
                   <div onClick={(e) => handlerImpl(e, id, index)}>
                     <OperateJsx index={index} latest={node.length -1 === index}/>
                   </div>
