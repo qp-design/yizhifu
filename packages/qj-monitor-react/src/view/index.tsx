@@ -1,9 +1,8 @@
 import React, { Suspense } from 'react';
 import {QjIcon} from '@brushes/components';
 import classNames from 'classnames';
-import {useMonitorReact, useMenu} from '../hooks';
+import {useMonitorReact} from '../hooks';
 import { _ } from '@brushes/tools';
-import {Menu} from '../components';
 const {get} = _;
 
 const MonitorComponent = (
@@ -17,11 +16,8 @@ const MonitorComponent = (
     handlerImpl,
   } = useMonitorReact();
 
-  const { menu, path, switchMenu } = useMenu();
-
   return (
     <Suspense fallback={<p>加载中……</p>}>
-      <Menu menu={menu} path={path} switchMenu={switchMenu}/>
       <div className={'default-iphone'}>
         <span className={'title'}>Iphone8首屏</span>
         <span className={'line'}></span>

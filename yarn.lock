@@ -1072,6 +1072,19 @@
     qs "^6.11.0"
     typescript ">4.0.0"
 
+"@brushes/api@^0.2.6":
+  version "0.2.6"
+  resolved "https://registry.npmjs.org/@brushes/api/-/api-0.2.6.tgz#a2ab097b295f6b14d64e9b024486f49a6dd39d18"
+  integrity sha512-XjUL2YRP6Oc9JZ6OgY754ioZt6QFl3cFEGYiCja30T4kXSbz6p33tDbbBbUEQU90kvPnoUHPs4PN4rEbzvpdhQ==
+  dependencies:
+    "@brushes/tools" "^1.0.29"
+    "@tarojs/taro" "^3.5.7"
+    "@types/node" ">18.0.0"
+    flyio "^0.6.14"
+    prettier "^2.7.1"
+    qs "^6.11.0"
+    typescript ">4.0.0"
+
 "@brushes/components@^0.0.30":
   version "0.0.30"
   resolved "https://registry.npmjs.org/@brushes/components/-/components-0.0.30.tgz#d136aa7f4116f2f4c728b075ab1a564359f5c390"
@@ -1096,7 +1109,7 @@
     sortablejs "^1.15.0"
     typescript ">4.0.0"
 
-"@brushes/tools@^1.0.18", "@brushes/tools@^1.0.25":
+"@brushes/tools@^1.0.18", "@brushes/tools@^1.0.25", "@brushes/tools@^1.0.29":
   version "1.0.29"
   resolved "https://registry.npmjs.org/@brushes/tools/-/tools-1.0.29.tgz#ecba44d7418b12016878ac8f1890633c09937a04"
   integrity sha512-B8qGraHrLNTDtxPTg5zwMFUDdbKCcnXZWbAig12/sefV0b+chzgIhNcKA+D1dePUAT+WqLklLJmTyygW875c3A==

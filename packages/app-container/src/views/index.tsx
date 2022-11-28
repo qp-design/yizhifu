@@ -11,13 +11,12 @@ import OperateJsx from './operateJsx';
 import Material from './material';
 import {useConfigEnv, useDynamicModule, useLoadMaterial} from '../hooks';
 import './index.scss';
+import {Menu} from '../components';
 
 const Root = () => {
   useConfigEnv()
-  localStorage.setItem('host', 'https://b2coptfa10b0d4f03f4ff48c571f14558fa068.saas.qjclouds.com/')
-  const id = window.location.pathname;
   const materials = useLoadMaterial('1');
-  const { modules, pageId, defaultPageConfig } = useDynamicModule('1')
+  const { modules, pageId, defaultPageConfig, menu, switchMenu } = useDynamicModule('1')
   useEffect(() => {
     // createApp(MonitorVue).mount(document.querySelector('#simulate-qj-monitor-20221014'));
   }, []);
@@ -29,6 +28,7 @@ const Root = () => {
     <div className={'design-container'}>
       <Material port={modules[0] || {}}/>
       <DropJsx pageId={pageId} defaultPageConfig={defaultPageConfig}>
+        <Menu menu={menu} path={pageId} switchMenu={switchMenu}/>
         <div id={"simulate-qj-monitor-20221014"}>
           {/*<MonitorVue materials={materials}/>*/}
           <Monitor materials={materials} />

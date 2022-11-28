@@ -85,8 +85,7 @@ module.exports = {
       template: "./src/index.html",
     }),
     new webpack.DefinePlugin({
-      "process.env": {},
-      // 'process.env': `window._env_` //构建时定义process.env值为window._env_的值
+      'process.env': `window._env_` //构建时定义process.env值为window._env_的值
     }),
   ],
 };

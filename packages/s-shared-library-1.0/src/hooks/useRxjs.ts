@@ -89,6 +89,11 @@ class LowCodeGraph {
         this.behaviorId$.next({ id: activedId, type: 'update' });
     }
 
+    // 初始化保存过的节点数据
+    resetNode() {
+        this.count = 0
+    }
+
     // 删除节点
     deleteNode(id: number) {
         ++this.count;

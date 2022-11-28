@@ -20,46 +20,46 @@ code {
   background: #efefef;
   grid-template-columns: 370px auto 350px;
   .monitor {
+    position: relative;
     overflow-y: auto;
+    .monitor-menu{
+      position: fixed !important;
+      padding: 0;
+      top: 75px;
+      left: 380px;
+      list-style: none;
+      text-align: right;
+      height: 36px;
+      line-height: 36px;
+      z-index: 100;
+      margin-bottom: 5px;
+      width: 100px;
+      li{
+        margin: 0 1px 4px 0;
+        font-weight: 500;
+        cursor: pointer;
+        background: #fff;
+        height: 36px;
+        border-radius: 4px;
+        text-align: center;
+        box-shadow: 2px 2px 4px rgb(100 100 100 / 20%);
+        &.actived{
+          background: #1890ff;
+          color: #fff;
+        }
+      }
+    }
     #simulate-qj-monitor-20221014{
       //background: #8c8c97;
       //padding: 10px 10px 30px 10px;
       max-width: 375px;
       width: 375px;
-      margin: 10px auto;
+      margin: 20px auto;
       min-height: 667px;
       background-color: #fff;
       -webkit-box-shadow: 0 0 28px 0 #ccc;
       box-shadow: 0 0 28px 0 #ccc;
       position: relative;
-      .monitor-menu{
-        position: sticky;
-        padding: 0;
-        top: 0;
-        list-style: none;
-        text-align: right;
-        height: 36px;
-        line-height: 36px;
-        z-index: 100;
-        margin-bottom: 5px;
-        display: flex;
-        width: 375px;
-        li{
-          flex: 1;
-          margin: 0 1px;
-          font-weight: 500;
-          cursor: pointer;
-          background: #fff;
-          height: 36px;
-          border-radius: 4px;
-          text-align: center;
-          box-shadow: 2px 2px 4px rgb(100 100 100 / 20%);
-          &.actived{
-            background: #1890ff;
-            color: #fff;
-          }
-        }
-      }
       .default-iphone{
         position: absolute;
         top: 650px;

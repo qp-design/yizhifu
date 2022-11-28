@@ -27,7 +27,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@brushes/api": "^0.1.9",
+    "@brushes/api": "^0.2.6",
     "@tarojs/components": "^3.5.7",
     "@tarojs/plugin-platform-weapp": "^3.5.7",
     "antd-mobile": "^5.24.2",
