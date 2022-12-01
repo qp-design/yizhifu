@@ -6,7 +6,6 @@ import {useMaterialGraph, gModelMap} from 'qj-shared-library';
 import {queryTginfoMenuTree, getPfsModelTagValueByTginfo} from '@brushes/api';
 import { _ } from '@brushes/tools'
 import {MenuItem} from '../components';
-import {loginWithoutPassword} from '../../../../../lerna-repo/packages/api/src';
 
 const { isEmpty, isUndefined } = _;
 
@@ -40,16 +39,6 @@ export function useDynamicModule(id: string) {
       ]
     } else {
       arr = [
-        {
-          url: `http://localhost:4001/remoteEntry.js`,
-          scope: 'qj_material',
-          module: './menu',
-        },
-        {
-          url: `http://localhost:4002/remoteEntry.js`,
-          scope: 'qj_operate',
-          module: './operate',
-        }
         // {
         //   url: `http://material.lc.qjclouds.com/remoteEntry.js`,
         //   scope: 'qj_material',
@@ -62,30 +51,22 @@ export function useDynamicModule(id: string) {
         // }
       ]
     }
-
+    // 低代码配置
+    setModules(arr);
 
     (async () => {
       // @ts-ignore
       try{
-
-        const { tginfoCode, token, tenantCode, memberCode } = await loginWithoutPassword({
-          temporaryToken: window._env_.token,
-          phone: window._env_.phone
-        })
-
-        localStorage.setItem('saas-token', JSON.stringify({'ticketTokenid': token}))
-        // 低代码配置
-        setModules(arr);
         const menu = await queryTginfoMenuTree({
-          tginfoCode,
+          tginfoCode: '6f91dfb2775547aea82eca67bd568239',
           rows: 30,
           page: 1
         });
 
         expPageGraph.setInitConfig({
           menus: menu,
-          tenantCode,
-          memberCode
+          tenantCode: '597370900596056114',
+          memberCode: '20000210397842'
         });
 
         if(isEmpty(menu) || isUndefined(menu)) {

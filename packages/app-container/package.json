@@ -32,7 +32,7 @@
   "dependencies": {
     "@brushes/api": "^0.2.9",
     "@brushes/qj-shared-library": "^0.0.5",
-    "antd": "^4.24.2",
+    "antd": "^5.0.2",
     "classnames": "^2.3.2",
     "dotenv": "^16.0.3",
     "react": "^18.0.0",

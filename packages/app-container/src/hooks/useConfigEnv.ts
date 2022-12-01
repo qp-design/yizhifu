@@ -2,8 +2,7 @@ import {useEffect} from 'react';
 
 interface ObjType {
   host: string;
-  token: string;
-  phone: string
+  token: string
 }
 
 export function useConfigEnv() {
@@ -12,8 +11,7 @@ export function useConfigEnv() {
     const url = new URL(window.location.href);
     let obj : ObjType = {
       host: '',
-      token: '',
-      phone: ''
+      token: ''
     }
 
     for(let param of url.searchParams) {
@@ -23,9 +21,9 @@ export function useConfigEnv() {
       obj[key] = value
     }
 
+    localStorage.setItem('saas-token', JSON.stringify({'ticketTokenid': obj.token}))
     window._env_ = {
       TOKEN: obj.token,
-      PHONE: obj.phone,
       REACT_APP_SESSION_KEY: 'saas-token',
       REACT_APP_BASE_URL: obj.host,
       REACT_APP_APPLICATION: '',
