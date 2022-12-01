@@ -1,0 +1,44 @@
+
+.brushes-popup {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1010;
+  visibility: hidden;
+  background-color: rgba(0, 0, 0, 0.2);
+
+  .brushes-popup-mask {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background-color: rgba(0, 0, 0, .3);
+    opacity: 0;
+    transition: 0.3s;
+  }
+
+  .brushes-popup-content {
+    height: 50vh;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background-color: #fff;
+    transform: translate3d(0,100%,0);
+    transition: 0.3s;
+  }
+
+  &.show {
+    visibility: visible;
+
+    .brushes-popup-mask {
+      opacity: 1;
+    }
+
+    .brushes-popup-content {
+      transform: translate3d(0, 0, 0);
+    }
+  }
+}
