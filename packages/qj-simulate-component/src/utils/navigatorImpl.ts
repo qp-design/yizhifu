@@ -9,3 +9,14 @@ export async function navigatorImpl(url: string) {
         });
     }
 }
+
+export async function navigatorBackImpl(back = 1) {
+    const isTaro = getEnv();
+    if (isTaro) {
+        const Taro = await getTaro();
+        Taro.navigateBack({
+            delta: back
+        })
+    }
+}
+

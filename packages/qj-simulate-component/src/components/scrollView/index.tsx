@@ -16,6 +16,7 @@ const ScrollViewJsx: React.FC<ScrollViewType> = ({ Threshold = 20, onScroll, scr
         if (isTaro) {
             return {
                 scrollY: true,
+                enablePassive: true,
                 scrollWithAnimation: true,
                 scrollTop,
                 lowerThreshold: Threshold,

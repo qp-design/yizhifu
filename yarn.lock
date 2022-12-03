@@ -1134,6 +1134,15 @@
     ky "^0.31.1"
     lodash-es "^4.17.21"
 
+"@brushes/tools@^1.0.31":
+  version "1.0.31"
+  resolved "https://registry.npmjs.org/@brushes/tools/-/tools-1.0.31.tgz#c5fd8883df3fc0d888372238e6e38d15950c74f8"
+  integrity sha512-ESrcjWPAQazdXsopy6z4ddFP/QZLLszQ54Wyoluv6o5qIqKG7Rf3AtWqf+b85nMhgLHCluR4qnjwNpZ4Npnwvw==
+  dependencies:
+    "@types/lodash-es" "^4.17.6"
+    immer "^9.0.15"
+    lodash-es "^4.17.21"
+
 "@ctrl/tinycolor@^3.4.0":
   version "3.4.1"
   resolved "https://registry.npmjs.org/@ctrl/tinycolor/-/tinycolor-3.4.1.tgz#75b4c27948c81e88ccd3a8902047bcd797f38d32"
