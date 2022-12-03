@@ -5,3 +5,4 @@ export * from './scrollView';
 export * from './loading';
 export * from './tabs';
 export * from './popup';
+export * from './numStep';

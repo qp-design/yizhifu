@@ -3,8 +3,8 @@ import React, {Dispatch, ReactNode} from "react";
 
 interface PopupInterface {
   popupVisible: boolean;
-  popupHandler: Dispatch<boolean>,
-  children: ReactNode
+  popupHandler: Dispatch<boolean>;
+  children: ReactNode;
 }
 
 export const Popup: React.FC<PopupInterface> =
@@ -12,8 +12,13 @@ export const Popup: React.FC<PopupInterface> =
     const {View} = useComponent();
     return (
       <View className={`brushes-popup ${popupVisible? 'show': ''}`}>
-        <View className={'brushes-popup-mask'} onClick={() => popupHandler(false)}></View>
-        <View className={'brushes-popup-content'}>{children}</View>
+        <View className={'brushes-popup-mask'} onClick={() => popupHandler(false)} />
+        <View className={'brushes-popup-content'}>
+          <View className={'brushes-popup-closeWrap'}>
+            <View className="icon" onClick={() => popupHandler(false)} />
+          </View>
+          {children}
+        </View>
       </View>
     )
   }
