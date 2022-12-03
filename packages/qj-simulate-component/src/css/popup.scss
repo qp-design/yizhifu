@@ -26,8 +26,23 @@
     bottom: 0;
     width: 100%;
     background-color: #fff;
-    transform: translate3d(0,100%,0);
+    transform: translate3d(0, 100%, 0);
     transition: 0.3s;
+
+    .brushes-popup-closeWrap {
+      box-sizing: content-box;
+      padding-top: 15px;
+      padding-right: 10px;
+      height: 18px;
+      text-align: right;
+
+      .icon {
+        display: inline-block;
+        width: 18px;
+        height: 18px;
+        background-color: yellowgreen;
+      }
+    }
   }
 
   &.show {
