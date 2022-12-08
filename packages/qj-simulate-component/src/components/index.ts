@@ -6,3 +6,6 @@ export * from './loading';
 export * from './tabs';
 export * from './popup';
 export * from './numStep';
+export * from './iconMobile';
+export * from './radio'
+export * from './checkbox'

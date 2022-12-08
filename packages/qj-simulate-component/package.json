@@ -16,7 +16,7 @@
     "start": "concurrently npm:start:*",
     "start:ts": "npx tsc --watch",
     "start:css": "npx nodemon --config ./nodemon.json",
-    "cp-css": "rm -rf css/ && mkdir -p ./css && cp -R ./src/css ./",
+    "cp-css": "rm -rf css/ && mkdir -p ./css && cp -R src/scss/* ./css",
     "build": "npm run cp-css && rm -rf dist/ && prettier --write src/ && tsc",
     "push": "git add . && git commit -m",
     "postpush": "git push",

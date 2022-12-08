@@ -30,6 +30,10 @@ module.exports = {
         },
       },
       {
+        test: /\.json$/,
+        use: ["json-loader"],
+      },
+      {
         test: /\.(css|s[ac]ss)$/i,
         use: ["style-loader", "css-loader", "postcss-loader", "sass-loader"],
       },

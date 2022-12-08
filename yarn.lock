@@ -1124,6 +1124,20 @@
     sortablejs "^1.15.0"
     typescript ">4.0.0"
 
+"@brushes/qj-shared-library@^0.0.5":
+  version "0.0.5"
+  resolved "https://registry.npmjs.org/@brushes/qj-shared-library/-/qj-shared-library-0.0.5.tgz#3ae718f4d1d5c4d39245dd0a0840668946c4857e"
+  integrity sha512-ey2c85rCorNVDZ+i4wq9fJeLzdD5En0juxg+N13IhT91caQLvMLw903KHsLP9VwP2WlpT8ROrh+lTcEWOay3mg==
+  dependencies:
+    "@brushes/tools" "^1.0.25"
+    "@types/node" ">18.0.0"
+    classnames "^2.3.2"
+    prettier "^2.7.1"
+    react "^18.0.0"
+    rxjs "^7.5.6"
+    sortablejs "^1.15.0"
+    typescript ">4.0.0"
+
 "@brushes/tools@^1.0.18", "@brushes/tools@^1.0.25", "@brushes/tools@^1.0.29":
   version "1.0.29"
   resolved "https://registry.npmjs.org/@brushes/tools/-/tools-1.0.29.tgz#ecba44d7418b12016878ac8f1890633c09937a04"
@@ -6172,6 +6186,11 @@ jsesc@~0.5.0:
   version "0.5.0"
   resolved "https://registry.npmjs.org/jsesc/-/jsesc-0.5.0.tgz#e7dee66e35d6fc16f710fe91d5cf69f70f08911d"
   integrity sha512-uZz5UnB7u4T9LvwmFqXii7pZSouaRPorGs5who1Ip7VO0wxanFvBL7GkM6dTHlgX+jhBApRetaWpnDabOeTcnA==
+
+json-loader@^0.5.7:
+  version "0.5.7"
+  resolved "https://registry.npmjs.org/json-loader/-/json-loader-0.5.7.tgz#dca14a70235ff82f0ac9a3abeb60d337a365185d"
+  integrity sha512-QLPs8Dj7lnf3e3QYS1zkCo+4ZwqOiF9d/nZnYozTISxXWCfNs9yuky5rJw4/W34s7POaNlbZmQGaB5NiXCbP4w==
 
 json-parse-better-errors@^1.0.1:
   version "1.0.2"

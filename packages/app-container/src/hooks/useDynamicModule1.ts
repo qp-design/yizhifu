@@ -3,7 +3,7 @@ import message from 'antd/es/message';
 // @ts-ignore
 import {useMaterialGraph, gModelMap} from 'qj-shared-library';
 
-import {queryTginfoMenuTree, getPfsModelTagValueByTginfo} from '@brushes/api';
+import {queryTginfoMenuTree, getPfsModelTagValueByTginfo, loginWithoutPassword} from '@brushes/api';
 import { _ } from '@brushes/tools'
 import {MenuItem} from '../components';
 
@@ -39,34 +39,38 @@ export function useDynamicModule(id: string) {
       ]
     } else {
       arr = [
-        // {
-        //   url: `http://material.lc.qjclouds.com/remoteEntry.js`,
-        //   scope: 'qj_material',
-        //   module: './menu',
-        // },
-        // {
-        //   url: `http://operate.lc.qjclouds.com/remoteEntry.js`,
-        //   scope: 'qj_operate',
-        //   module: './operate',
-        // }
+        {
+          url: `http://material.lc.qjclouds.com/remoteEntry.js`,
+          scope: 'qj_material',
+          module: './menu',
+        },
+        {
+          url: `http://operate.lc.qjclouds.com/remoteEntry.js`,
+          scope: 'qj_operate',
+          module: './operate',
+        }
       ]
     }
     // 低代码配置
     setModules(arr);
 
     (async () => {
+      const { phone, token, tenantCode } = window._env_;
+      const { tginfoCode, userInfoCode, ticketTokenid } = await loginWithoutPassword({ temporaryToken: token, phone, tenantCode })
+      localStorage.setItem('saas-token', JSON.stringify({ticketTokenid}))
+
       // @ts-ignore
       try{
         const menu = await queryTginfoMenuTree({
-          tginfoCode: '6f91dfb2775547aea82eca67bd568239',
+          tginfoCode,
           rows: 30,
           page: 1
         });
 
         expPageGraph.setInitConfig({
           menus: menu,
-          tenantCode: '597370900596056114',
-          memberCode: '20000210397842'
+          tenantCode,
+          memberCode: userInfoCode
         });
 
         if(isEmpty(menu) || isUndefined(menu)) {
@@ -115,7 +119,11 @@ export function useDynamicModule(id: string) {
         menuOpcode: pageId
       });
 
-      const dataStr = get(pageConfig,'modelTagvalueJson','{}');
+      if(isEmpty(pageConfig)) {
+        message.error('接口异常');
+      }
+
+      const dataStr = get(pageConfig, 'modelTagvalueJson', '{}');
       let data = JSON.parse(dataStr);
 
       if((!data.hasOwnProperty('nodeGraph'))) {

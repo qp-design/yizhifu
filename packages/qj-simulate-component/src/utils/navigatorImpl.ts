@@ -20,3 +20,13 @@ export async function navigatorBackImpl(back = 1) {
     }
 }
 
+
+export async function switchTabImpl(url: string) {
+    const isTaro = getEnv();
+    if (isTaro) {
+        const Taro = await getTaro();
+        Taro.switchTab({
+            url
+        })
+    }
+}

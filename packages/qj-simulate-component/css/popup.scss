@@ -21,7 +21,7 @@
   }
 
   .brushes-popup-content {
-    height: 50vh;
+    //height: 50vh;
     position: absolute;
     bottom: 0;
     width: 100%;
@@ -31,17 +31,17 @@
 
     .brushes-popup-closeWrap {
       box-sizing: content-box;
-      padding-top: 15px;
+      padding-top: 10px;
       padding-right: 10px;
       height: 18px;
       text-align: right;
 
-      .icon {
-        display: inline-block;
-        width: 18px;
-        height: 18px;
-        background-color: yellowgreen;
-      }
+      //.icon {
+      //  display: inline-block;
+      //  width: 18px;
+      //  height: 18px;
+      //  background-color: yellowgreen;
+      //}
     }
   }
 
