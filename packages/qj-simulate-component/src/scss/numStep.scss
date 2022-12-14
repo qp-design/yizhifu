@@ -1,14 +1,14 @@
 .numStep {
   height: 22px;
   line-height: 22px;
-  border: 1px solid #bcbcbc;
+  border: 1px solid #dddddd;
   display: grid;
   grid-template-columns: 22px auto 22px;
   box-sizing: content-box;
 
   .content {
-    border-left: 1px solid #bcbcbc;
-    border-right: 1px solid #bcbcbc;
+    border-left: 1px solid #dddddd;
+    border-right: 1px solid #dddddd;
     text-align: center;
     padding: 0 10px;
     font-size: 14px;
@@ -22,5 +22,6 @@
     text-align: center;
     font-size: 14px !important;
     font-weight: normal !important;
+    color: #bcbcbc !important;
   }
 }

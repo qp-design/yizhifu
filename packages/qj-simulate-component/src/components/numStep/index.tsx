@@ -16,9 +16,9 @@ export const NumStep: React.FC<numStepType> = ({count, handleStep}) => {
   const {View, Text} = useComponent();
   return (
     <View className={'numStep'}>
-      <IconMobile value={'jianqu'} onClick={handleStep.bind(null, 'minus')}/>
+      <IconMobile value={'jianqu'} onClick={handleStep.bind(null, 'minus')} />
       <Text className={'content'}>{count}</Text>
-      <IconMobile value={'zengjia'} onClick={handleStep.bind(null, 'plus')}/>
+      <IconMobile value={'zengjia'} onClick={handleStep.bind(null, 'plus')} />
     </View>
   )
 }
