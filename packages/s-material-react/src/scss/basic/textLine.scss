@@ -1,0 +1,13 @@
+@mixin titleLine($num: 1) {
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    @if ($num == 1) {
+        white-space: nowrap;
+    } @else {
+        white-space: pre-wrap;
+        display: -webkit-box;
+        -webkit-line-clamp: $num;
+        -webkit-box-orient: vertical;
+    }
+}

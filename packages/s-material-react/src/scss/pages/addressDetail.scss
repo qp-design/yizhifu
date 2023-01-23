@@ -1,0 +1,79 @@
+.addressDetail {
+  background-color: #F6F6F6;
+  padding-top: 15px;
+  box-sizing: border-box;
+
+  .adm-list {
+    padding-top: 10px;
+    background-color: #fff;
+    border-radius: 10px;
+
+    .adm-list-item {
+      padding: 0 16px;
+
+      .adm-form-item-label {
+        height: 24px;
+        line-height: 24px;
+      }
+
+      .adm-list-item-content {
+        border-bottom: 1 rpx solid #D8D8D8 !important;
+      }
+
+      &:last-child {
+        .adm-form-item-label {
+          height: 32px;
+          line-height: 32px;
+        }
+
+        .adm-list-item-content {
+          border-bottom: 0 none !important;
+        }
+      }
+
+      .h5-div .adm-form-item-child-inner {
+        width: 100%;
+      }
+    }
+  }
+
+  .adm-form-item-feedback-error {
+    color: red;
+  }
+
+  .adm-form-item-label .adm-form-item-required-asterisk {
+    color: red;
+  }
+
+  .areaWrap {
+    color: #888;
+    height: 24px;
+    line-height: 24px;
+  }
+
+  button {
+    background-color: #000;
+    border-radius: 30px;
+    color: #fff;
+    border: 0 none;
+  }
+
+  .skullWrap {
+    padding: 12px;
+
+    .skull {
+      border-radius: 10px;
+      overflow: hidden;
+
+      .skullItem {
+        width: 100%;
+        height: 48px;
+        margin-bottom: 5px;
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+}

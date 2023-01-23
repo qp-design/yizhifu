@@ -1,0 +1,78 @@
+.couponItem {
+  width: 100%;
+  box-sizing: border-box;
+  display: inline-block;
+  padding: 10px;
+  position: relative;
+  background: radial-gradient(transparent 0px, transparent 4px, #1a1922 4px, #1a1922) -10px -10px;
+  background-size: 20px 20px;
+  margin-bottom: 14px;
+
+  &:after {
+    content: '';
+    position: absolute;
+    left: 5px;
+    top: 5px;
+    right: 5px;
+    bottom: 5px;
+    //box-shadow: 0 0 20px 1px rgba(0, 0, 0, 1);
+    z-index: -1;
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  .coupon-content {
+    height: 120px;
+    width: 100%;
+    background: #1a1922;
+    display: grid;
+    grid-template-columns: 108px 1fr;
+    position: relative;
+
+    .choose {
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      //background: #fff;
+      border-radius: 100%;
+      overflow: hidden;
+    }
+
+    .price {
+      border-right: 1px dashed #fff;
+      text-align: center;
+      line-height: 120px;
+
+      .symbol {
+        font-size: 23px;
+        color: #fff;
+      }
+
+      .num {
+        font-size: 33px;
+        color: #fff;
+        text-align: left;
+      }
+    }
+
+    .info {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+
+      .title {
+        margin-bottom: 12px;
+        font-size: 16px;
+        color: #fff;
+        line-height: 22px;
+      }
+
+      .date {
+        color: rgba(255, 255, 255, 0.45);
+      }
+    }
+  }
+}

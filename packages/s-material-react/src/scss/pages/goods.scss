@@ -1,0 +1,90 @@
+@import '../basic/textLine';
+
+.goods {
+    background: #fff;
+
+    .goods-img {
+        width: 100%;
+        overflow: hidden;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center center;
+    }
+
+    .space {
+        margin-top: 10px;
+        padding: 8px;
+        position: relative;
+
+        .anticon {
+            position: absolute;
+            right: 10px;
+            bottom: 10px;
+        }
+    }
+
+    .titleType {
+        font-size: 16px;
+        margin-bottom: 4px;
+        @include titleLine(2);
+    }
+
+    .subTitle {
+        font-size: 12px;
+        color: #888;
+    }
+
+    .price {
+        font-size: 20px;
+        color: #f00;
+
+        .subPrice {
+            font-size: 14px;
+        }
+    }
+
+    .markedPrice {
+        padding-left: 8px;
+        font-size: 12px;
+        color: #888;
+        text-decoration: line-through;
+    }
+}
+
+.goods-one {
+    .goods-img {
+        height: 310px;
+    }
+}
+
+.goods-two {
+    .subTitle {
+        margin-bottom: 5px;
+    }
+
+    .goods-img {
+        height: 200px;
+    }
+}
+
+.goods-three {
+    .goods {
+        position: relative;
+        display: grid;
+        grid-template-columns: 1fr 200px;
+    }
+
+    .goods-img {
+        height: 150px;
+    }
+
+    .space {
+        margin-top: 0;
+        padding: 18px;
+    }
+
+    .price {
+        position: absolute;
+        bottom: 10px;
+    }
+}

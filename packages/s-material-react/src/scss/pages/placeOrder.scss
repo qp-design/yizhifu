@@ -1,0 +1,126 @@
+.placeOrder {
+    background-color: #f9f9f9;
+    overflow: scroll;
+
+    .place-order-goods{
+        padding: 12px 12px 1px 12px;
+        background: #fff;
+        margin-bottom: 8px;
+    }
+    .chooseAddress {
+        background: #fff;
+        padding: 0 12px;
+        height: 58px;
+        margin-bottom: 8px;
+        .group {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+            line-height: 58px;
+            .local {
+                width: 17px;
+                height: 16px;
+                margin-right: 7px;
+                background-color: yellowgreen;
+                display: inline-block;
+            }
+            .address {
+                font-size: 14px;
+                color: #000;
+            }
+        }
+
+        .address-info {
+            width: 100%;
+            display: grid;
+            grid-template-columns: 25px auto 50px;
+            .left-title{
+                font-size: 14px;
+                margin: 10px 0 4px 0;
+            }
+            .left-padding{
+                padding-left: 5px;
+            }
+            .left-title-default{
+                background: #1a1922;
+                font-size: 10px;
+                color: #fff;
+                padding: 2px 4px;
+                margin-left: 5px;
+                border-radius: 5px;
+            }
+        }
+        .arrow {
+            width: 6px;
+            height: 10px;
+            background-color: yellowgreen;
+        }
+    }
+
+    .blcWrap {
+        margin-bottom: 8px;
+        padding: 17px 12px;
+        background-color: #fff;
+
+        .title {
+            font-size: 16px;
+            font-weight: 500;
+            color: #333333;
+            margin-bottom: 17px;
+        }
+
+        .blcItem {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 17px;
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+
+            .label {
+                color: #333;
+            }
+
+            .value {
+                color: #a7a7a7;
+
+                .icon {
+                    width: 6px;
+                    height: 10px;
+                    display: inline-block;
+                    background-color: yellowgreen;
+                    margin-left: 5px;
+                }
+            }
+        }
+    }
+
+    .placeOrderFooter {
+        background-color: #fff;
+        height: 54px;
+        line-height: 54px;
+        display: flex;
+        justify-content: space-between;
+        padding: 0 12px;
+        box-sizing: border-box;
+        align-items: center;
+
+        .price {
+            font-size: 14px;
+            color: #333333;
+        }
+
+        .btn {
+            width: 105px;
+            height: 40px;
+            line-height: 40px;
+            color: #ffffff;
+            padding: 0 12px;
+            background-color: #000;
+            text-align: center;
+            border-radius: 20px;
+        }
+    }
+}
