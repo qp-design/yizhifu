@@ -1,7 +1,5 @@
-
-
 import React, {useState} from 'react';
-import Tag from 'antd/es/tag';
+import {Tag} from 'antd';
 export const PageItems = ({data}: { data: { current: Array<any> }}) => {
   const [state, ] =
     useState(['#2db7f5', '#87d068', '#108ee9', 'blue', 'cyan', 'green',

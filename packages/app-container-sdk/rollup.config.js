@@ -25,10 +25,9 @@ export default {
     federation({
       name: "app_container",
       filename: "remoteEntry.js",
-      remotes: {
-        'qj-monitor-vue': 'rwebpackremote',
-        foo_rollup_spa: 'rollup_spa',
-      },
+      // remotes: {
+      //   // 'qj-monitor-vue': 'qj_monitor_vue@http://localhost:3005/remoteEntry.js',
+      // },
       shared: {
         "qj-shared-library": {
           singleton: true,

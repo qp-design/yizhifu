@@ -1,10 +1,8 @@
 import React from 'react';
-import Button from 'antd/es/button';
-import Space from 'antd/es/space';
-import Modal from 'antd/es/modal';
+import {Button, Modal, Space} from 'antd';
 // @ts-ignore
 import {FederationModule, remoteAssetsType} from 'qj-shared-library';
-import {useSaveConfig} from '../hooks/useSaveConfig';
+import {useSaveConfig} from '../hooks';
 import {PageItems} from '../components';
 
 

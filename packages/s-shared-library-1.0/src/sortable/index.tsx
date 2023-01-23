@@ -45,6 +45,7 @@ export const DropJsx = ({
     pageId: string;
     defaultPageConfig: PageMaterialType;
 }) => {
+    // @ts-ignore
     const monitorInstance = useLowCodeGraph(pageId, defaultPageConfig);
     const drop = useRef<HTMLDivElement>(null as any);
 
