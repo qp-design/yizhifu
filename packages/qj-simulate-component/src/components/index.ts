@@ -9,3 +9,4 @@ export * from './numStep';
 export * from './iconMobile';
 export * from './radio'
 export * from './checkbox'
+export * from './wrapLoading'

@@ -3,14 +3,13 @@ import Button from 'antd/es/button';
 import Space from 'antd/es/space';
 import Modal from 'antd/es/modal';
 // @ts-ignore
-import { FederationModule} from 'qj-shared-library';
+import {FederationModule, remoteAssetsType} from 'qj-shared-library';
 import {useSaveConfig} from '../hooks/useSaveConfig';
 import {PageItems} from '../components';
 
 
-const OperateJsx = ({port}: {port: Object}) => {
+const OperateJsx = ({Operate}: {Operate: Function}) => {
   const {saveImpl, defaultValue, isModalOpen, handleOk, handleCancel, data, loading} = useSaveConfig()
-
   return (
     <div className={'operateConfig'}>
       <div className={'config-top'}>
@@ -23,21 +22,10 @@ const OperateJsx = ({port}: {port: Object}) => {
       <Modal title="页面配置" confirmLoading={loading} open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
          <PageItems data={data} />
       </Modal>
-      <MaterialOperate
-        port={port}
-        defaultValue={defaultValue}
-      />
+      <Operate defaultValue={defaultValue}/>
     </div>
   )
 }
 
-const MaterialOperate = ({defaultValue, port} : { defaultValue: Object; port: Object}) => {
-  return (
-    <FederationModule
-      defaultValue={defaultValue}
-      port={port}
-    />
-  )
-}
 
 export default OperateJsx;

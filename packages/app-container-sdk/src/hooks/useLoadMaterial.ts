@@ -1,5 +1,5 @@
 import {useEffect, useState} from 'react';
-// @ts-ignore
+//@ts-ignore
 import {useMaterialGraph} from 'qj-shared-library';
 
 export function useLoadMaterial(id: string) {

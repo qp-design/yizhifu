@@ -1,8 +1,8 @@
 import React from 'react';
 // @ts-ignore
-import { FederationModule } from 'qj-shared-library';
+import { FederationModule, remoteAssetsType } from 'qj-shared-library';
 
-function Material({port} : { port: Object }) {
+function Material({port} : { port: remoteAssetsType }) {
   return (
     <div className={'materials'}>
       <FederationModule

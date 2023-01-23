@@ -2,7 +2,7 @@ import {useCallback, useEffect, useRef, useState} from 'react';
 import {lowCodeSave} from '@brushes/api';
 import message from 'antd/es/message';
 
-// @ts-ignore
+//@ts-ignore
 import {NodeGraph, useLowCodeGraph, behaviorType, gModelMap, useMaterialGraph} from 'qj-shared-library';
 import { _ } from '@brushes/tools';
 
@@ -13,6 +13,7 @@ export function useSaveConfig() {
   const payload = useRef<Array<any>>([]);
   const [loading, setLoading] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  debugger
   const expGraph = useLowCodeGraph();
   const expMenuGraph = useMaterialGraph();
   const [defaultValue, setDefaultValue] = useState<NodeGraph>(null as any);
@@ -83,6 +84,7 @@ export function useSaveConfig() {
       message.success(result[0].msg);
 
       // 重置操作页面的配置操作记录
+      // @ts-ignore
       data.current.forEach(item => gModelMap.get(item.id).resetNode())
     } catch (err) {
       message.error(err as string)

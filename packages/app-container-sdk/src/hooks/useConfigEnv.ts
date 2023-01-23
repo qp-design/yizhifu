@@ -22,6 +22,7 @@ export function useConfigEnv() {
     }
 
     localStorage.setItem('saas-token', JSON.stringify({'ticketTokenid': obj.token}))
+    // @ts-ignore
     window._env_ = {
       REACT_APP_SESSION_KEY: 'saas-token',
       REACT_APP_BASE_URL: obj.host,

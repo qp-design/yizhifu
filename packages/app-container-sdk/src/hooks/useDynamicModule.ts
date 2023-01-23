@@ -1,13 +1,13 @@
 import {useCallback, useEffect, useRef, useState} from 'react';
 import message from 'antd/es/message';
-// @ts-ignore
+//@ts-ignore
 import {useMaterialGraph, gModelMap} from 'qj-shared-library';
 
-import {queryTginfoMenuTree, getPfsModelTagValueByTginfo, loginWithoutPassword} from '@brushes/api';
+import { getPfsModelTagValueByTginfo } from '@brushes/api';
 import { _ } from '@brushes/tools'
 import {MenuItem} from '../components';
 
-const { isEmpty, isUndefined, get } = _;
+const { isEmpty, get } = _;
 
 export function useDynamicModule(id: string) {
   const [modules, setModules] = useState([]);
@@ -23,62 +23,67 @@ export function useDynamicModule(id: string) {
   });
 
   useEffect(() => {
-    let arr = [] as any
-    if(id === '1' && process.env.NODE_ENV==='development') {
-      arr = [
-        {
-          url: `http://localhost:4001/remoteEntry.js`,
-          scope: 'qj_material',
-          module: './menu',
-        },
-        {
-          url: `http://localhost:4002/remoteEntry.js`,
-          scope: 'qj_operate',
-          module: './operate',
-        }
-      ]
-    } else {
-      arr = [
-        {
-          url: `http://material.lc.qjclouds.com/remoteEntry.js`,
-          scope: 'qj_material',
-          module: './menu',
-        },
-        {
-          url: `http://operate.lc.qjclouds.com/remoteEntry.js`,
-          scope: 'qj_operate',
-          module: './operate',
-        }
-      ]
-    }
+    const arr = [
+      {
+        url: `http://material.lc.qjclouds.com/remoteEntry.js`,
+        scope: 'qj_material',
+        module: './menu',
+      },
+      {
+        url: `http://operate.lc.qjclouds.com/remoteEntry.js`,
+        scope: 'qj_operate',
+        module: './operate',
+      }
+    ] as any
+    // if(id === '1' && process.env.NODE_ENV==='development') {
+    //   arr = [
+    //     {
+    //       url: `http://localhost:4001/remoteEntry.js`,
+    //       scope: 'qj_material',
+    //       module: './menu',
+    //     },
+    //     {
+    //       url: `http://localhost:4002/remoteEntry.js`,
+    //       scope: 'qj_operate',
+    //       module: './operate',
+    //     }
+    //   ]
+    // } else {
+    //   arr = [
+    //     {
+    //       url: `http://material.lc.qjclouds.com/remoteEntry.js`,
+    //       scope: 'qj_material',
+    //       module: './menu',
+    //     },
+    //     {
+    //       url: `http://operate.lc.qjclouds.com/remoteEntry.js`,
+    //       scope: 'qj_operate',
+    //       module: './operate',
+    //     }
+    //   ]
+    // }
     // 低代码配置
     setModules(arr);
 
     (async () => {
-      const { phone, token, tenantCode } = window._env_;
-      const { tginfoCode, userInfoCode, ticketTokenid } = await loginWithoutPassword({ temporaryToken: token, phone, tenantCode })
-      localStorage.setItem('saas-token', JSON.stringify({ticketTokenid}))
-
       // @ts-ignore
       try{
-        const menu = await queryTginfoMenuTree({
-          tginfoCode,
-          rows: 30,
-          page: 1
-        });
+        const menu = [{ menuOpcode: 'index'}]
 
         expPageGraph.setInitConfig({
           menus: menu,
-          tenantCode,
-          memberCode: userInfoCode
+          tenantCode: '597370900596056114',
+          memberCode: '20000210397842'
         });
 
-        if(isEmpty(menu) || isUndefined(menu)) {
-          message.error('当前租户下菜单没有配置')
-          return
-        }
+        // if(isEmpty(menu) || isUndefined(menu)) {
+        //   message.error('当前租户下菜单没有配置')
+        //   return
+        // }
 
         isExistRef.current = menu[0].menuOpcode + '';
+        console.log(85, isExistRef.current)
+        //@ts-ignore;
         setMenu(menu);
         await fetchPageNode(menu[0].menuOpcode + '')
         setPageId(menu[0].menuOpcode + '');
@@ -119,11 +124,7 @@ export function useDynamicModule(id: string) {
         menuOpcode: pageId
       });
 
-      if(isEmpty(pageConfig)) {
-        message.error('接口异常');
-      }
-
-      const dataStr = get(pageConfig, 'modelTagvalueJson', '{}');
+      const dataStr = get(pageConfig,'modelTagvalueJson','{}');
       let data = JSON.parse(dataStr);
 
       if((!data.hasOwnProperty('nodeGraph'))) {

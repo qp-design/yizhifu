@@ -31,7 +31,7 @@
   },
   "dependencies": {
     "@brushes/components": "^0.0.30",
-    "@brushes/qj-shared-library": "^0.0.4",
+    "@brushes/qj-shared-library": "^0.0.6",
     "react": "^18.0.0",
     "react-dom": "^18.0.0"
   }

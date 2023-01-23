@@ -3,11 +3,12 @@ const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPl
 
 const deps = require("./package.json").dependencies;
 module.exports = {
+  output: {
 
+  },
   resolve: {
     extensions: [".tsx", ".ts", ".jsx", ".js", ".json"],
   },
-
   devServer: {
     port: 3006,
     historyApiFallback: true,
