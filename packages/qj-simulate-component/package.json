@@ -1,0 +1,44 @@
+{
+  "name": "@brushes/qj-simulate-component",
+  "version": "0.0.9",
+  "description": "'组件库'",
+  "main": "dist/index.js",
+  "sideEffects": [
+    "*.scss",
+    "*.css"
+  ],
+  "files": [
+    "dist",
+    "css",
+    "iconfont"
+  ],
+  "scripts": {
+    "start": "concurrently npm:start:*",
+    "start:ts": "npx tsc --watch",
+    "start:css": "npx nodemon --config ./nodemon.json",
+    "cp-css": "rm -rf css/ && mkdir -p ./css && cp -R src/scss/* ./css",
+    "build": "npm run cp-css && rm -rf dist/ && prettier --write src/ && tsc",
+    "push": "git add . && git commit -m",
+    "postpush": "git push",
+    "prepublishOnly": "echo 我们准备发布npm包",
+    "publishOnly": "npm run build && npm run push",
+    "postpublishOnly": "npm version patch && npm publish && git push"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@brushes/api": "^0.2.6",
+    "@tarojs/components": "^3.5.7",
+    "@tarojs/plugin-platform-weapp": "^3.5.7",
+    "antd-mobile": "^5.24.2",
+    "lodash-es": "^4.17.21",
+    "react": "^18.0.0"
+  },
+  "devDependencies": {
+    "@types/node": ">18.0.0",
+    "@types/react": "^18.0.0",
+    "concurrently": "^7.5.0",
+    "prettier": "^2.7.1",
+    "typescript": ">4.0.0"
+  }
+}

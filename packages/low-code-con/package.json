@@ -1,0 +1,48 @@
+{
+  "name": "low-code-container",
+  "version": "1.0.0",
+  "scripts": {
+    "build": "webpack --mode production",
+    "build:test": "webpack --mode production",
+    "build:pre": "webpack --mode production",
+    "build:prod": "webpack --mode production",
+    "start": "NODE_ENV=development  webpack serve --open --mode development",
+    "start:live": "webpack serve --open --mode development --live-reload --hot"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.15.8",
+    "@babel/plugin-transform-runtime": "^7.15.8",
+    "@babel/preset-env": "^7.15.8",
+    "@babel/preset-react": "^7.14.5",
+    "@babel/preset-typescript": "^7.10.4",
+    "@types/react": "^18.0.0",
+    "@types/react-dom": "^18.0.0",
+    "autoprefixer": "^10.1.0",
+    "babel-loader": "^8.2.2",
+    "css-loader": "^6.3.0",
+    "html-webpack-plugin": "^5.3.2",
+    "postcss": "^8.2.1",
+    "postcss-loader": "^4.1.0",
+    "sass-loader": "^13.0.2",
+    "style-loader": "^3.3.0",
+    "typescript": "^4.5.2",
+    "webpack": "^5.57.1",
+    "webpack-cli": "^4.9.0",
+    "webpack-dev-server": "^4.3.1"
+  },
+  "dependencies": {
+    "@brushes/materials": "^0.0.38",
+    "@brushes/qj-shared-library": "0.0.6",
+    "@brushes/share-resource": "^1.0.1",
+    "antd": "^5.1.6",
+    "app-container-sdk": "^0.0.4",
+    "dotenv-webpack": "^8.0.1",
+    "react": "^18.0.0",
+    "react-color": "^2.19.3",
+    "react-dom": "^18.0.0",
+    "s-material-react": "^0.1.13",
+    "s-material-vue": "^0.0.2",
+    "sass": "^1.54.9",
+    "sass-loader": "^13.0.2"
+  }
+}

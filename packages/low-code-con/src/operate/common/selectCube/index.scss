@@ -1,0 +1,43 @@
+.selectCube {
+  .cubeGroup {
+    padding: 0;
+    list-style: none;
+
+    .cubeItem {
+      width: 100%;
+      background-color: #eee;
+      padding: 15px 10px;
+      display: grid;
+      grid-template-columns: 1fr 86px;
+
+      .lPart {
+        display: grid;
+        grid-template-rows: repeat(2, 1fr);
+        width: 190px;
+
+        .title {
+          margin-bottom: 0;
+
+          p {
+            color: #595961;
+            font-size: 14px;
+            margin-bottom: 0;
+            height: 43px;
+            line-height: 43px;
+            text-indent: 16px;
+          }
+        }
+
+        .pickLink {
+
+        }
+      }
+
+      .rPart {
+        .choose-container {
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+}

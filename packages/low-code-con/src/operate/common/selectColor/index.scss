@@ -1,0 +1,30 @@
+.selectColor {
+  margin-bottom: 24px;
+  .box {
+    display: inline-block;
+    width: 60px;
+    height: 30px;
+    border-radius: 4px;
+    background-color: #e9e7ec;
+    padding: 5px;
+    cursor: pointer;
+
+    .boxContent {
+      border-radius: 2px;
+      height: 100%;
+      width: 100%;
+    }
+  }
+  .tip {
+    display: inline-block;
+    height: 30px;
+    line-height: 30px;
+    vertical-align: top;
+    color: #9797a1;
+    margin-right: 10px;
+  }
+}
+
+.ant-popover-inner-content {
+  padding: 0;
+}

@@ -1,0 +1,223 @@
+@import "~antd/dist/reset.css";
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+  "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+  sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  //box-sizing: border-box;
+}
+.pup{
+
+}
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+  monospace;
+}
+
+.design-container {
+  display: grid;
+  height: 100vh;
+  background: #efefef;
+  grid-template-columns: 370px auto 350px;
+
+  .monitor {
+    position: relative;
+    overflow-y: auto;
+
+    .monitor-menu {
+      position: fixed !important;
+      padding: 0;
+      top: 75px;
+      left: 380px;
+      list-style: none;
+      text-align: right;
+      height: 36px;
+      line-height: 36px;
+      z-index: 100;
+      margin-bottom: 5px;
+      width: 100px;
+
+      li {
+        margin: 0 1px 4px 0;
+        font-weight: 500;
+        cursor: pointer;
+        background: #fff;
+        height: 36px;
+        border-radius: 4px;
+        text-align: center;
+        box-shadow: 2px 2px 4px rgb(100 100 100 / 20%);
+
+        &.actived {
+          background: #1890ff;
+          color: #fff;
+        }
+      }
+    }
+
+    #simulate-qj-monitor-20221014 {
+      //background: #8c8c97;
+      //padding: 10px 10px 30px 10px;
+      max-width: 375px;
+      width: 375px;
+      margin: 20px auto;
+      min-height: 667px;
+      background-color: #fff;
+      -webkit-box-shadow: 0 0 28px 0 #ccc;
+      box-shadow: 0 0 28px 0 #ccc;
+      position: relative;
+
+      .default-iphone {
+        position: absolute;
+        top: 650px;
+        left: -130px;
+        width: 130px;
+        display: flex;
+
+        .title {
+          font-size: 12px;
+          display: block;
+          color: #595961;
+          font-weight: 400;
+          width: 90px;
+          height: 30px;
+          line-height: 30px;
+          text-align: center;
+          background: #e3e5e9;
+          border-radius: 4px;
+        }
+
+        .line {
+          display: block;
+          width: 40px;
+          height: 2px;
+          position: relative;
+          top: 15px;
+          border-top: 1px dashed #bbb;
+        }
+      }
+
+      & > .contentItem {
+        width: 100%;
+        padding: 10px 0;
+        height: 75px;
+        font-size: 12px;
+        color: #8c8c97;
+        text-align: center;
+        background: #daf4fd;
+      }
+    }
+
+    .monitor-node {
+      position: relative;
+
+      .icon-operate {
+        position: absolute;
+        left: 380px;
+        width: 120px;
+        top: 0;
+
+        span {
+          cursor: pointer;
+          padding: 5px;
+          background: #fff;
+          border-radius: 4px;
+          margin-right: 4px;
+          box-shadow: 2px 2px 4px rgba(100, 100, 100, 0.2);
+
+          :hover {
+            color: #ff0000;
+          }
+        }
+      }
+
+      .component-name {
+        position: absolute;
+        top: 0;
+        padding: 5px;
+        font-weight: 500;
+        width: 80px;
+        background: #fff;
+        border-radius: 4px;
+        //margin-right: 4px;
+        box-shadow: 2px 2px 4px rgba(100, 100, 100, 0.2);
+      }
+
+      .component-name-left {
+        left: 380px;
+      }
+
+      .component-name-right {
+        right: 380px;
+      }
+
+      .left {
+        left: 0;
+      }
+    }
+
+    .actived {
+      position: relative;
+      &:after {
+        display: block;
+        content: "";
+        border: solid 2px #1d77ff;
+        position: absolute;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        left: 0;
+        z-index: 1;
+      }
+    }
+  }
+
+  .dragActived {
+    background: rgb(222, 235, 255);
+  }
+}
+
+.operateConfig {
+  background: #fff;
+  overflow-y: auto;
+  .config-top{
+    padding: 10px 20px;
+    border-bottom: solid 1px #efefef;
+  }
+
+  .pageTitle {
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1;
+    margin: 10px 0 5px 0;
+  }
+
+  .ant-collapse-content-box {
+    padding-bottom: 0 !important;
+  }
+
+  .inner-operate {
+    border-top: solid 1px #efefef;
+    padding: 18px;
+
+    .title {
+      font-size: 18px;
+      margin-bottom: 12px;
+      font-weight: 500
+    }
+
+    .info {
+      color: #777;
+    }
+  }
+}
+
+.materials {
+  width: 370px;
+  height: 100vh;
+  background-color: #fff;
+}

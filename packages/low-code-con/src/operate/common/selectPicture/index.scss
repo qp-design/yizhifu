@@ -1,0 +1,36 @@
+.pic {
+  position: relative;
+
+  .checkBox {
+    position: absolute;
+    left: 5px;
+    top: 2px;
+    z-index: 10;
+  }
+}
+
+.picTop {
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: 1fr 120px;
+}
+
+.choose-container {
+  margin-bottom: 24px;
+  cursor: pointer;
+
+  .choose {
+    border-radius: 4px;
+    padding-top: 20px;
+    height: 86px;
+    width: 86px;
+    text-align: center;
+    border: 1px #e1e1e1 dashed;
+    background-color: #fff;
+
+    p {
+      margin-top: 5px;
+    }
+  }
+}
+

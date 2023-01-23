@@ -1,0 +1,27 @@
+@import "s-material-react/css";
+.materials-container {
+  width: 370px;
+  height: 100vh;
+  overflow: scroll;
+  border-right: 1px solid #ddd;
+  box-sizing: content-box;
+  background-color: #fff;
+
+  .tabs {
+    .ant-tabs-nav-list {
+      width: 100%;
+
+      .ant-tabs-tab {
+        width: 50%;
+        margin: 0;
+        text-align: center;
+        .ant-tabs-tab-btn {
+          width: 100%;
+        }
+      }
+    }
+    .ant-tabs-nav-operations {
+      display: none !important;
+    }
+  }
+}

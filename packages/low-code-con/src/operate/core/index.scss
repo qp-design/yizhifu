@@ -1,0 +1,17 @@
+@import '@brushes/materials/css/materials';
+
+.ant-modal-close-x{
+  //.anticon{ padding-top: 20px}
+}
+.ant-modal-body{
+  padding-top: 0;
+  padding-bottom: 0;
+  .ant-table-wrapper{
+    min-height: 400px;
+  }
+}
+.search-material-search .search-material-item{
+  display: grid;
+  grid-column-gap: 10px;
+  grid-template-columns: repeat(2, 1fr);
+}

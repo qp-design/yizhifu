@@ -1,0 +1,45 @@
+.linkContent-list {
+  margin: 20px 0;
+}
+
+.handle {
+  display: flex;
+  justify-content: space-between;
+
+  &>span {
+    padding-left: 16px;
+    height: 43px;
+    line-height: 43px;
+  }
+
+  button {
+    //margin-top: 27px;
+    line-height: 22px;
+    height: 43px;
+  }
+}
+
+.init {
+  height: 43px;
+  line-height: 22px;
+}
+
+
+.baseLink, .goodsListLink {
+  .baseLinkItem, .goodsListLinkItem {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+.treeWrap {
+  height: 50vh;
+  overflow: scroll;
+
+  .loadingWrap {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
