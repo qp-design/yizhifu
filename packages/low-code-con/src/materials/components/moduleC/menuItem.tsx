@@ -1,11 +1,11 @@
+//@ts-nocheck
 import {QjIcon} from '@brushes/share-resource';
-// @ts-ignore
 import {DragJsx} from 'qj-shared-library';
-  import React from 'react';
+import React from 'react';
 
   const MenuItem = ({lists = []}: { lists: Array<any>}) => {
     return (
-      <DragJsx className={'content'}>
+      <DragJsx className={'materials'}>
         {
           lists.map((item, index) => {
             return (

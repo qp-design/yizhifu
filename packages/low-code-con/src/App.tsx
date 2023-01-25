@@ -1,7 +1,9 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import Index from './pages/visual'
 import './App.scss';
+import {useConfigEnv} from './pages/visual/hooks';
 function App() {
+  useConfigEnv()
   // useEffect(() => {
   //   console.log(process.env)
   // }, [])

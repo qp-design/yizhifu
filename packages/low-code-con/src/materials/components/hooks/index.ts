@@ -1,5 +1,5 @@
 import {useEffect, useState} from 'react';
-import {config} from '../../mock/config';
+import {index} from '../../config/config';
 // @ts-ignore
 import {useMaterialGraph} from 'qj-shared-library';
 import {message} from 'antd';
@@ -11,7 +11,7 @@ export function useMaterialMenu() {
   const [detailIndex, setDetailIndex] = useState(0);
   const [activedIndex, setActived] = useState(0)
   const [lists, setList] = useState(() => {
-    return [config[0]['children'][0]['group']]
+    return [index[0]['children'][0]['group']]
   });
 
   useEffect(() => {
@@ -28,7 +28,7 @@ export function useMaterialMenu() {
   const onHandleClassify = (pageId:string) => {
     if(!pageId) return;
     if(pageId !== 'index') {
-      const index = config.find(item => item.code === 'business')!.children.findIndex(citem => citem.code === pageId);
+      const index = index.find(item => item.code === 'business')!.children.findIndex(citem => citem.code === pageId);
       if(index === -1) {
         message.error(`菜单配置有问题: ${pageId}不存在，检查一下菜单配置`);
         return;
@@ -42,7 +42,7 @@ export function useMaterialMenu() {
   const length = (typeIndex: number) => {
     let length = 0
     for(let i = 0; i < typeIndex; i++) {
-      length += config[typeIndex-1]['children'].length;
+      length += index[typeIndex-1]['children'].length;
     }
     return length
   }
@@ -53,7 +53,7 @@ export function useMaterialMenu() {
     setClassifyIndex(typeIndex);
     setDetailIndex(len + itemIndex);
 
-    const item = config[typeIndex]['children'][itemIndex]['group'];
+    const item = index[typeIndex]['children'][itemIndex]['group'];
     setList(prevState => {
       prevState[itemIndex + len] = item;
       return prevState

@@ -1,11 +1,9 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import './index.scss';
 import Tabs from 'antd/es/tabs';
 import { QjIcon } from '@brushes/share-resource'
 import TemplateC from "./components/templateC";
 import ModuleC from "./components/moduleC";
-// @ts-ignore
-import {useMaterialGraph} from 'qj-shared-library';
 
 const Index = () => {
   const items = [

@@ -1,3 +1,4 @@
+@import "s-material-vue/css";
 @import "~antd/dist/reset.css";
 * {
   box-sizing: border-box;
@@ -23,7 +24,7 @@ code {
   display: grid;
   height: 100vh;
   background: #efefef;
-  grid-template-columns: 370px auto 350px;
+  grid-template-columns: 270px auto 350px;
 
   .monitor {
     position: relative;
@@ -214,10 +215,4 @@ code {
       color: #777;
     }
   }
-}
-
-.materials {
-  width: 370px;
-  height: 100vh;
-  background-color: #fff;
 }
